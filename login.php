@@ -29,7 +29,7 @@
         } 
 		?> 
 
-<!--on succesfull login index page will have more buttens to other pages-->
+<!--on succesfull login index page will have more butteasdfasdsddfns to other pages-->
 
 <body>
 
