@@ -1,0 +1,130 @@
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.sidebar.right {
+    flex-shrink: 0; /* Prevents the sidebar from shrinking */
+    margin-right: 20px; /* Adds some space between the ad and the form */
+}
+
+/* Navigation bar styling */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+/* Centering the form on the page */
+.form-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    form label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="submit"] {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+/* Styling for the table */
+.centered-table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse; /* Collapses the border */
+    width: 80%; /* Adjust as per requirement */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+    .centered-table th, .centered-table td {
+        border: 1px solid #ddd; /* Border for th and td */
+        padding: 8px;
+        text-align: left;
+    }
+
+    .centered-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .centered-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .centered-table tr:hover {
+        background-color: #ddd;
+    }
+
+    .centered-table td a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+        .centered-table td a:hover {
+            text-decoration: underline;
+        }
+
+
+.sidebar.left {
+    /* Additional styles for left sidebar */
+}
+
+.sidebar.right {
+    /* Additional styles for right sidebar */
+}
+
+/* .sidebar img {
+    width: 100%;
+    height: auto;
+    display: block;
+} */
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
