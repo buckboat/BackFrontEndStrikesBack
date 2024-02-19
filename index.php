@@ -3,8 +3,7 @@
 
 <head>
 	<title>Lumberjack Rewards</title>
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
-	<?php echo '<link rel="stylesheet" type="text/css" href="style.css"></head>'; ?>
+	<link href="style.css" rel="stylesheet"/>
 </head>
 
 
