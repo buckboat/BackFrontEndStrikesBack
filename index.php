@@ -10,6 +10,10 @@
 
 <body>
 
+<?php
+	include "leftside.php";
+	?>
+
 	<div class="container">
 
 		<h1 style="text-align:center">
