@@ -23,7 +23,7 @@
 			<input type="submit" name="requests" value="Requests" />
 		</form>
         <form method="post">
-			<input type="submit" name="stats" value="Statistics" />
+			<input type="submit" name="Stats" value="Statistics" />
 		</form>
 
     </div>
