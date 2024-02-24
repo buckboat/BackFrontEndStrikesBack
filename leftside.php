@@ -1,15 +1,34 @@
+<!doctype html>
 <html>
+
+<head>
+	<title>leftside</title>
+	<link href="style.css" rel="stylesheet"/>
+</head>
 
 <body>
 
 
 
 
-        <div class="w3-sidebar w3-bar-block" style="width:25%">
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
-</div>
+    <div class="leftside">
+
+    <form method="post">
+			<input type="submit" name="mems" value="Members" />
+		</form>
+        <form method="post">
+			<input type="submit" name="badges" value="Badges" />
+		</form>
+        <form method="post">
+			<input type="submit" name="requests" value="Requests" />
+		</form>
+        <form method="post">
+			<input type="submit" name="Stats" value="Statistics" />
+		</form>
+
+    </div>
+
+    
 
 
 </body>

@@ -6,38 +6,23 @@
 	<link href="style.css" rel="stylesheet"/>
 </head>
 
-
-
 <body>
-
-	<div class="container">
-
-		<h1 style="text-align:center">
-
-			<img src="spirit-logo-purple-tn2.jpg" alt="" width="64" height="64">
-
-			Lumberjack Rewards
-
-		</h1>
-
-
-	</div>
-
 	<br />
-	<div class="container">
-		<div class="row">
+	<div>
+		<div>
 
-			<div class="col-sm-4">
+			<div>
 				<?php
 
+				include "topbar.php";
 				include "leftside.php";
 
 				?>
 			</div>
 
 
-			<div class="col-sm-8">
-				/*
+			<div >
+				
 				<?php
 
 		        
@@ -63,7 +48,7 @@
 				} else {
 					//echo "<pre>gfj_db found! no need to recreate and repopulate\n </pre>";
 				}
-				echo "<pre>database is ready\n </pre>";
+				//echo "<pre>database is ready\n </pre>";
 				?>
 
 			</div>
@@ -71,14 +56,15 @@
 
 		</div>
 	</div>
-	<div>
+	<div class="main">
 
 
 		<!-- form for navigation/execution -->
+		<div class="login" style="padding-bottom:20px;">
 		<form method="post">
 			<input type="submit" name="Login" value="Login" />
 		</form>
-
+			</div>
 		<div style="border: 4px solid black; padding: 5px;">
 
 			<!-- button functionality -->
@@ -86,23 +72,30 @@
 			if (isset($_POST['Login'])) {
 				include('login.php');
 			}
-			if (isset($_POST['B'])) {
-				echo "<pre>reset button pressed\n </pre>";
-				$conn->query("DROP DATABASE gfj_db");
-				ob_start();
-				include('FISHPROJECT_DB_Table_Creation.php');
-				include('FISH_FILL_TABLES.php');
-				ob_end_clean();
-				echo "<pre>gfj_db reset to default values!\n </pre>";
+			if (isset($_POST['Stats'])) {
+				include('statistics.php');
+			}
+			if (isset($_POST['stats1'])) {
+				include('test.php');
+			}
+			if (isset($_POST['stats2'])) {
+			
+			}
+            if (isset($_POST['stats3'])) {
+			
+			}
+            if (isset($_POST['stats4'])) {
+			
+			}
+            if (isset($_POST['stats5'])) {
+			
+			}
+            if (isset($_POST['stats6'])) {
+			
 			}
 			?>
 		</div>
 
-		<div>
-			<h2>Link to Indexes</h2>
-			<button onclick="location.href=''">test button</button>
-			<button onclick="location.href=''">Goes no where</button>
-		</div>
 
 </body>
 

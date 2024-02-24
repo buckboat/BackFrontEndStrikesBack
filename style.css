@@ -2,7 +2,37 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+	width: 100px;
+    border: 1px red;
+    width: 200px;
+    margin-left: auto;
+}
+
+.main {
+
+    justify-content: center;
+    padding-left: 200px;
+    padding-right: 100px;
+
+
+}
+
+.main.login {
+	padding-bottom:100px;
+}
+
+.leftside {
+
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 0; /* Stay on top */
+  top: 0%; /* Stay at the top */
+  left: 0%;
+  background-color:  #5F259F;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+
 }
 
 .sidebar.right {
@@ -61,8 +91,8 @@ form {
     }
 
     form input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
+        background-color: white;
+        color: purple;
         cursor: pointer;
     }
 
@@ -109,9 +139,7 @@ form {
         }
 
 
-.sidebar.left {
-    /* Additional styles for left sidebar */
-}
+
 
 .sidebar.right {
     /* Additional styles for right sidebar */
