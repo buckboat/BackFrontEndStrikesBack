@@ -12,10 +12,23 @@
 
 
     <div class="leftside">
-        <a href="#" >Link 1</a>
-        <a href="#" >Link 2</a>
-        <a href="#" >Link 3</a>
+
+    <form method="post">
+			<input type="submit" name="mems" value="Members" />
+		</form>
+        <form method="post">
+			<input type="submit" name="badges" value="Badges" />
+		</form>
+        <form method="post">
+			<input type="submit" name="requests" value="Requests" />
+		</form>
+        <form method="post">
+			<input type="submit" name="stats" value="Statistics" />
+		</form>
+
     </div>
+
+    
 
 
 </body>
