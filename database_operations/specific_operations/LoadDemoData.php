@@ -17,7 +17,8 @@ array_push($sql,
     DummyData_UserBadge,
     DummyData_Department,
     DummyData_UserDepartment,
-    DummyData_BadgeRequest
+    DummyData_BadgeRequest,
+    DummyData_EventBadge
 );
 
 foreach ($sql as $query) {

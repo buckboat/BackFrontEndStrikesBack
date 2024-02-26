@@ -79,6 +79,21 @@ define('CreateTable_UserBadge',
     );");
 
 
+define('CreateTable_EventBadge', 
+
+    "CREATE TABLE IF NOT EXISTS EventBadge (
+    EventBadgeID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    BadgeID INT(11),
+    DepartmentID INT(11),
+    EventName varchar(100),
+    EventDescription varchar(250),
+    QRSVG BLOB,
+    DateCreated datetime,
+    ActiveEvent boolean,
+    FOREIGN KEY (BadgeID) REFERENCES Badge(BadgeID),
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+    );");
+    
 define('DummyData_User', 
 
     "INSERT INTO User (UserType, Username, Password, LastLogin) VALUES
@@ -139,4 +154,9 @@ define('DummyData_BadgeRequest',
     (2, 2, ''),
     (3, 10, 'New badge for Squirrel Pics');");
 
+define('DummyData_EventBadge', 
+    
+    "INSERT INTO EventBadge (BadgeID, DepartmentID, EventName, EventDescription, QRSVG, DateCreated, ActiveEvent) VALUES
+    (1, 1, 'Coding Competition', 'Solve all the problems', NULL, NOW(), TRUE),
+    (2, 1, 'Squirrel Scavenger Hunt', 'Find all the squirrels', NULL, NOW(), TRUE);");
 ?>

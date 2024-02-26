@@ -18,7 +18,8 @@ array_push($sql,
     CreateTable_Department,
     CreateTable_UserBadge,
     CreateTable_UserDepartment,
-    CreateTable_BadgeRequest
+    CreateTable_BadgeRequest,
+    CreateTable_EventBadge
 );
 
 foreach ($sql as $query) {

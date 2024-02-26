@@ -15,12 +15,12 @@ https://phpqrcode.sourceforge.net/
 ## Stat Chart Generation
 https://www.chartjs.org/docs/latest/
 
-## New Event Table
-EventID - int
+## New EventBadge Table
+EventBadgeID - int
 BadgeID - int NULL
 DepartmentID - int NULL
 EventName - varchar(100)
 EventDescription - varchar(250)
-qrSVG - blob
+QRSVG - blob
 DateCreated - datetime
 ActiveEvent - boolean
