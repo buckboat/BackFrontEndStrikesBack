@@ -93,7 +93,31 @@
             if (isset($_POST['stats6'])) {
 			
 			}
+			if (isset($_POST['CreateDB'])) {
+				include('../database_operations/specific_operations/CreateDatabase.php');
+			}
+			if (isset($_POST['CreateTablesDB'])) {
+				include('../database_operations/specific_operations/CreateTables.php');
+			}
+			if (isset($_POST['DemoDataDB'])) {
+				include('../database_operations/specific_operations/LoadDemoData.php');
+			}
+			if (isset($_POST['ResetDB'])) {
+				include('../database_operations/ResetDatabase.php');
+			}
 			?>
+		</div>
+		<form method="post">
+			<input type="submit" name="CreateDB" value="Create" />
+			<input type="submit" name="CreateTablesDB" value="Fill" />
+			<input type="submit" name="DemoDataDB" value="Demo" />
+			<input type="submit" name="ResetDB" value="Reset" />
+		</form>
+
+		<div>
+
+
+
 		</div>
 
 
