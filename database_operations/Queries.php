@@ -28,7 +28,7 @@ define('CreateTable_User',
     
     "CREATE TABLE IF NOT EXISTS User (
     UserID INT(11) AUTO_INCREMENT PRIMARY KEY,
-    UserType VARCHAR(50),
+    UserType INT(11),
     Username VARCHAR(50),
     Password VARCHAR(50),
     LastLogin DATETIME
@@ -97,11 +97,11 @@ define('CreateTable_EventBadge',
 define('DummyData_User', 
 
     "INSERT INTO User (UserType, Username, Password, LastLogin) VALUES
-    ('Manager', 'User 1', 'Password 1', NOW()),
-    ('Moderator', 'User 2', 'Password 2', NOW()),
-    ('Moderator', 'User 3', 'Password 3', NOW()),
-    ('Moderator', 'User 4', 'Password 4', NOW()),
-    ('Manager', 'User 5', 'Password 5', NOW());");
+    (0, 'User 1', 'Password 1', NOW()),
+    (1, 'User 2', 'Password 2', NOW()),
+    (1, 'User 3', 'Password 3', NOW()),
+    (1, 'User 4', 'Password 4', NOW()),
+    (0, 'User 5', 'Password 5', NOW());");
 
 
 define('DummyData_Badge', 
