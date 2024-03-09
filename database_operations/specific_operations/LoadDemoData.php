@@ -4,6 +4,7 @@
 
 include_once dirname(__FILE__, $levels=2) . "/Constants.php";
 include_once dirname(__FILE__, $levels=2) . "/DBConnection.php";
+include_once dirname(__FILE__, $levels=2) . "/Queries.php";
 
 $engine = new DBConnection();
 $conn = $engine->connect();

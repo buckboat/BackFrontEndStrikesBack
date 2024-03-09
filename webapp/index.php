@@ -24,10 +24,11 @@
 			<div >
 				
 				<?php
+				require_once dirname(__FILE__, $levels=2) ."/database_operations/Constants.php";
 
 		        
 				// Create connection
-				$conn = new mysqli("localhost", "test", "test", "");
+				$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 				// Check connection
 				if ($conn->connect_error) {
