@@ -16,6 +16,7 @@ class DBConnection
  
 		//connecting to mysql database
 		$this->con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		
  
 		//Checking if any error occured while connecting
 		if (mysqli_connect_errno()) {

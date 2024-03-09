@@ -1,9 +1,25 @@
+<?php
+session_start();
+?>
+
+<?php
+
+//echo $_SESSION['type'];
+//echo $_SESSION['username'];
+
+
+if (!isset($_SESSION['username'])) { //if login in session is not set
+	header("Location: login.php");
+}
+
+?>
+
 <!doctype html>
 <html>
 
 <head>
 	<title>Lumberjack Rewards</title>
-	<link href="style.css" rel="stylesheet"/>
+	<link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -14,19 +30,25 @@
 			<div>
 				<?php
 
-				include "topbar.php";
-				include "leftside.php";
+				include 'topbar.php';
+				include 'leftside.php';
+		
 
 				?>
 			</div>
 
 
-			<div >
-				
-				<?php
-				require_once dirname(__FILE__, $levels=2) ."/database_operations/Constants.php";
+			<div>
 
-		        
+				<?php
+
+				
+			
+
+			
+				require_once dirname(__FILE__, $levels = 2) . "/database_operations/Constants.php";
+
+
 				// Create connection
 				$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -62,37 +84,44 @@
 
 		<!-- form for navigation/execution -->
 		<div class="login" style="padding-bottom:20px;">
-		<form method="post">
-			<input type="submit" name="Login" value="Login" />
-		</form>
-			</div>
+			<form method="post">
+				<input type="submit" name="Logout" value="Logout" />
+			</form>
+		</div>
 		<div style="border: 4px solid black; padding: 5px;">
 
 			<!-- button functionality -->
 			<?php
-			if (isset($_POST['Login'])) {
-				include('login.php');
+			if (isset($_POST['Logout'])) {
+				include('logout.php');
 			}
 			if (isset($_POST['Stats'])) {
 				include('statistics.php');
 			}
+
+			if (isset($_POST['UserLogin']))
+				include('login.php');
+
+
+			if (isset($_POST['BTNreset'])) {
+
+				echo "<pre>gfj_db reset to default values!\n </pre>";
+			}
+
+
+
 			if (isset($_POST['stats1'])) {
 				include('test.php');
 			}
 			if (isset($_POST['stats2'])) {
-			
 			}
-            if (isset($_POST['stats3'])) {
-			
+			if (isset($_POST['stats3'])) {
 			}
-            if (isset($_POST['stats4'])) {
-			
+			if (isset($_POST['stats4'])) {
 			}
-            if (isset($_POST['stats5'])) {
-			
+			if (isset($_POST['stats5'])) {
 			}
-            if (isset($_POST['stats6'])) {
-			
+			if (isset($_POST['stats6'])) {
 			}
 			if (isset($_POST['CreateDB'])) {
 				include('../database_operations/specific_operations/CreateDatabase.php');
