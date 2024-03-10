@@ -8,7 +8,19 @@
     margin-left: auto;
 }
 
+.loginpage {
 
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+  
+
+}
+
+.loginback {
+
+    background-color:  #8e3d4f;
+}
 
 .main {
 
@@ -19,9 +31,7 @@
 
 }
 
-.main.login {
-	padding-bottom:100px;
-}
+
 
 .Permission{
     display: flex;

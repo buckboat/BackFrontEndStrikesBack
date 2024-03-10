@@ -3,7 +3,7 @@
 
 <head>
 	<title>leftside</title>
-	<link href="style.css" rel="stylesheet"/>
+	<link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -11,24 +11,24 @@
 
 
 
-    <div class="leftside">
+	<div class="leftside">
 
-    <form method="post">
+		<form method="post">
 			<input type="submit" name="mems" value="Members" />
 		</form>
-        <form method="post">
+		<form method="post">
 			<input type="submit" name="badges" value="Badges" />
 		</form>
-        <form method="post">
+		<form method="post">
 			<input type="submit" name="requests" value="Requests" />
 		</form>
-        <form method="post">
+		<form method="post">
 			<input type="submit" name="Stats" value="Statistics" />
 		</form>
 
-    </div>
+	</div>
 
-    
+
 
 
 </body>
