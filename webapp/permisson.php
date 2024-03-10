@@ -8,12 +8,12 @@
 
 <body>
 
-
+<div class="Permission"  >
 <h1 style="text-align:center">
 
     <img src="Kirbo.png" width="240" height="240">
 
-    No permissions to view this page.
+    No Parmesan!
 
 </h1>
 

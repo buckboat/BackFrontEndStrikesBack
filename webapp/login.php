@@ -28,7 +28,7 @@ $_SESSION['test'] = 'testSession';
     <input type="text" id="user" name="user" placeholder="Lets Rock," required><br><br>
     <label for="password">Password:</label>
     <input type="text" id="pass" name="pass" placeholder="Baby!" required><br><br>
-    <input type="submit" name="UserLogin" value="Let's Go!">
+    <input type="submit" name="UserLogin" value="Lets Go!">
   </form>
 
 
