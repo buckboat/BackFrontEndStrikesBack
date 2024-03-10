@@ -7,6 +7,7 @@ error_reporting(0);
 $_SESSION['test'] = 'testSession';
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -36,57 +37,78 @@ $_SESSION['test'] = 'testSession';
 
   <body>
 
-<?php
+    <?php
 
-//include_once dirname(__FILE__) . "../..//database_operations/DBConnection.php";
-include "..//database_operations/DBConnection.php";
-
-
-@$username = $_REQUEST['user'];
-@$password = $_REQUEST['pass'];
-
-$engine = new DBConnection();
-$conn = $engine->connect();
+    //include_once dirname(__FILE__) . "../..//database_operations/DBConnection.php";
+    include "..//database_operations/DBConnection.php";
 
 
-if (isset($_REQUEST['user']) && isset($_REQUEST['pass'])) {
+    @$username = $_REQUEST['user'];
+    @$password = $_REQUEST['pass'];
+
+    $engine = new DBConnection();
+    $conn = $engine->connect();
 
 
-  if (empty('user') || empty('pass')) {
+    if (isset($_REQUEST['user']) && isset($_REQUEST['pass'])) {
 
-    header("Location: login.php?error=its all wrong");
-    echo "wrong";
-    echo '2';
-    exit();
-  }
 
- else {
+      if (empty('user') || empty('pass')) {
 
-  $sql = "SELECT * FROM User WHERE Username = '$username' AND Password='$password'";
+        header("Location: login.php?error=its all wrong");
+        echo "wrong";
+        echo '2';
+        exit();
+      } else {
+
+        $sql = "SELECT * FROM User WHERE Username = '$username' AND Password='$password'";
 
 
 
 
-  $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql);
 
 
-  $row = mysqli_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($result);
 
-  echo $row;
 
-  if ($row['Username'] === $username && $row['Password'] === $password) {
 
-    echo "passed";
+        if ($row['Username'] === $username && $row['Password'] === $password) {
 
-    $_SESSION['username'] = $username;
-    $_SESSION['type'] = 1;
-    header('Location:index.php?error=workgin');
-    exit();
-  }
-}
-}
+          echo "passed";
+          echo $username;
 
-?>
+
+          $sql =  "SELECT UserType  FROM User WHERE Username = '$username'";
+
+          $result = mysqli_query($conn, $sql);
+
+          while ($row = mysqli_fetch_array($result)) {
+            echo $row['UserType'];
+            $_SESSION['type'] = intval($row['UserType']);
+          }
+
+          // $row = mysqli_fetch_assoc($result);
+
+          //echo $;
+
+          //$UserType =  intval($result[0]);
+
+
+
+        }
+
+
+
+        $_SESSION['username'] = $username;
+
+        header('Location:index.php?error=workgin');
+        exit();
+      }
+    }
+
+
+    ?>
 
 
 

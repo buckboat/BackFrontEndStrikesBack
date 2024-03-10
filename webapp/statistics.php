@@ -1,7 +1,20 @@
+<?php
+//session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+
+
+if ($_SESSION['type'] == 1 ) { //if login in session is not set
+	$_SESSION['Permisson'] = '1';
+	header("Location: index.php");
+}
+
+?>
 
 
 <head>

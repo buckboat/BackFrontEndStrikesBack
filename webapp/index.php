@@ -4,6 +4,8 @@ session_start();
 
 <?php
 
+
+
 //echo $_SESSION['type'];
 //echo $_SESSION['username'];
 
@@ -32,7 +34,14 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 
 				include 'topbar.php';
 				include 'leftside.php';
-		
+
+				if ($_SESSION['Permisson'] == '1') {
+					include 'permisson.php';
+					$_SESSION['Permisson'] = '0';
+					header("refresh: 3"); 
+				}
+
+
 
 				?>
 			</div>
@@ -42,10 +51,10 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 
 				<?php
 
-				
-			
 
-			
+
+
+
 				require_once dirname(__FILE__, $levels = 2) . "/database_operations/Constants.php";
 
 
@@ -138,9 +147,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			?>
 		</div>
 		<form method="post">
-			<input type="submit" name="CreateDB" value="Create" />
+			<!--<input type="submit" name="CreateDB" value="Create" />
 			<input type="submit" name="CreateTablesDB" value="Fill" />
-			<input type="submit" name="DemoDataDB" value="Demo" />
+			<input type="submit" name="DemoDataDB" value="Demo" /> -->
 			<input type="submit" name="ResetDB" value="Reset" />
 		</form>
 

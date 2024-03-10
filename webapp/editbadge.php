@@ -6,9 +6,10 @@
 <body>
 
 <?php
-include 'DBConnection.php';
-include 'leftside.php';
-include 'topbar.php';
+
+include "..//database_operations/DBConnection.php";
+$engine = new DBConnection();
+$conn = $engine->connect();
 
 // Check if form is submitted
 if(isset($_POST['edit'])){
@@ -27,8 +28,8 @@ if(isset($_POST['edit'])){
 }
 
 // Fetch the badge data
-$badge_id = $_GET['id'];
-$sql = "SELECT * FROM Badge WHERE BadgeID = $badge_id";
+//$badge_id = $_GET['id'];
+$sql = "SELECT * FROM Badge";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
