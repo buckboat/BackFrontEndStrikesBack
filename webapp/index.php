@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ?>
 
 <?php
@@ -106,6 +107,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			}
 			if (isset($_POST['Stats'])) {
 				include('statistics.php');
+			}
+			if (isset($_POST['badges'])) {
+				include('editbadge.php');
 			}
 
 			if (isset($_POST['UserLogin']))
