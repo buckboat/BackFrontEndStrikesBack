@@ -72,6 +72,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 					//echo "<pre>gfj_db found! no need to recreate and repopulate\n </pre>";
 				}
 				//echo "<pre>database is ready\n </pre>";
+
 				?>
 
 			</div>
@@ -145,6 +146,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 		</form>
 
 		<div>
+			<?php
+				echo '<img src="testImage.php" />';
+			?>
 
 
 
