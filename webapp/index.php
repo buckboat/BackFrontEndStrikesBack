@@ -92,12 +92,14 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 	<div class="main">
 
 
-		<!-- form for navigation/execution -->
+		<!-- form for navigation/execution 
 		<div class="login" style="padding-bottom:20px;">
 			<form method="post">
 				<input type="submit" name="Logout" value="Logout" />
 			</form>
 		</div>
+			-->
+
 		<div style="border: 4px solid black; padding: 5px; padding-bottom:20px; ">
 
 			<!-- button functionality -->
