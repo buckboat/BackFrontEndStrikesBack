@@ -29,7 +29,7 @@
 			<input type="submit" name="events" value="Events" />
 		</form>
 
-		<a href="https://youtu.be/dQw4w9WgXcQ?autoplay=1&mute=1"><img src="Donate.jpg" style=" display:flex; vertical-align:middle; color:red; " width="100%" height="44"></a>
+		<a href="https://bit.ly/3BlS71b"><img src="Donate.jpg" style=" display:flex; vertical-align:middle; color:red; " width="100%" height="44"></a>
 
 		<form style=" padding-top:266%; bottom: 20px;" method="post">
 				<input type="submit" name="Logout" value="Logout" />
