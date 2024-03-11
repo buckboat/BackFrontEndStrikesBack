@@ -9,7 +9,7 @@
 <body>
 
 
-<h1 style="text-align:center">
+<h1 style="text-align:center; color:white; "   >
 
     <img src="spirit-logo-purple-rgb.png" alt="" width="64" height="64">
 

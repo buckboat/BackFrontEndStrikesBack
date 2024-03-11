@@ -9,11 +9,9 @@
 <body>
 
 <div class="Permission"  >
-<h1 style="text-align:center">
+<h1>
 
-    <img src="Kirbo.png" width="240" height="240">
-
-    No Parmesan!
+    <img src="Kirbo.webp" style="vertical-align:middle; color:red; " width="240" height="240">No Parmesan!
 
 </h1>
 

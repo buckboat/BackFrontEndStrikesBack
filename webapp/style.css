@@ -6,6 +6,12 @@
     border: 1px red;
     width: 200px;
     margin-left: auto;
+    background-color:  #8e3d4f;
+}
+
+.loginpage.topbar {
+
+    color: white;
 }
 
 .loginpage {
@@ -13,6 +19,7 @@
     display: flex;
     justify-content: center;
     justify-content: center;
+    color: white;
   
 
 }
@@ -27,7 +34,8 @@
     justify-content: center;
     padding-left: 200px;
     padding-right: 100px;
-
+    background-color: #8e3d4f;
+    color: white;
 
 }
 
@@ -35,6 +43,10 @@
 
 .Permission{
     display: flex;
+    justify-content: center;
+    color: red;
+    align-items:center;
+    vertical-align:middle;
 }
 
 .leftside {

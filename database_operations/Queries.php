@@ -148,11 +148,15 @@ define('DummyData_UserDepartment',
 
 define('DummyData_BadgeRequest', 
     
-    "INSERT INTO BadgeRequest (UserID, BadgeID, Comment) VALUES
-    (2, 1, ''),
-    (3, 2, ''),
-    (2, 2, ''),
-    (3, 10, 'New badge for Squirrel Pics');");
+    "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, Comment) VALUES
+    (2, 1,'Yeah', 'yes'),
+    (3, 2,'Nope', 'no'),
+    (2, 2,'Dont Care', 'I dont care'),
+    (3, 10,'Squirrels', 'New badge for Squirrel Pics'),
+    (3, 10,'Rat', 'New badge for Rat Pics'),
+    (3, 10,'Possum', 'New badge for Possum Pics'),
+    (3, 10,'Racoon', 'New badge for Racoon Pics');");
+    
 
 define('DummyData_EventBadge', 
     

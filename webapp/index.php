@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 	<link href="style.css" rel="stylesheet" />
 </head>
 
-<body>
+<body style=" background-color:  #8e3d4f;" >
 	<br />
 	<div>
 		<div>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 				<input type="submit" name="Logout" value="Logout" />
 			</form>
 		</div>
-		<div style="border: 4px solid black; padding: 5px;">
+		<div style="border: 4px solid black; padding: 5px; padding-bottom:20px; ">
 
 			<!-- button functionality -->
 			<?php
@@ -110,6 +110,10 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			}
 			if (isset($_POST['badges'])) {
 				include('editbadge.php');
+			}
+
+			if (isset($_POST['requests'])) {
+				include('request.php');
 			}
 
 			if (isset($_POST['UserLogin']))
@@ -150,13 +154,15 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			}
 			?>
 		</div>
+
+		
 		<form method="post">
 			<!--<input type="submit" name="CreateDB" value="Create" />
 			<input type="submit" name="CreateTablesDB" value="Fill" />
 			<input type="submit" name="DemoDataDB" value="Demo" /> -->
 			<input type="submit" name="ResetDB" value="Reset" />
 		</form>
-
+		
 		<div>
 
 
