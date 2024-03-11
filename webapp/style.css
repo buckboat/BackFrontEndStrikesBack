@@ -125,7 +125,7 @@ form {
     }
 
         form input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #3D8E7C;
         }
 
 /* Styling for the table */
@@ -165,19 +165,6 @@ form {
         .centered-table td a:hover {
             text-decoration: underline;
         }
-
-
-
-
-.sidebar.right {
-    /* Additional styles for right sidebar */
-}
-
-/* .sidebar img {
-    width: 100%;
-    height: auto;
-    display: block;
-} */
 
 @media screen and (max-width: 768px) {
     .sidebar {
