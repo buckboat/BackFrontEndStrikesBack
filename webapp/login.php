@@ -96,6 +96,7 @@ include 'topbar.php';
 
         //$UserType =  intval($result[0]);
 
+        //password verify and password hash commands for php.
 
 
       }

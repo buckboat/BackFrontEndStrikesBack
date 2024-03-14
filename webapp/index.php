@@ -25,7 +25,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 	<link href="style.css" rel="stylesheet" />
 </head>
 
-<body style=" background-color:  #8e3d4f;" >
+<body style=" background-color:  #8e3d4f;">
 	<br />
 	<div>
 		<div>
@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 				if ($_SESSION['Permisson'] == '1') {
 					include 'permisson.php';
 					$_SESSION['Permisson'] = '0';
-					header("refresh: 3"); 
+					header("refresh: 3");
 				}
 
 
@@ -114,20 +114,29 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 				include('editbadge.php');
 			}
 
+			if (isset($_POST['edit'])) {
+				include('editbadge.php');
+			}
+
 			if (isset($_POST['requests'])) {
+				include('request.php');
+			}
+
+			if (isset($_POST['togApprove'])) {
 				include('request.php');
 			}
 
 			if (isset($_POST['UserLogin']))
 				include('login.php');
 
-
 			if (isset($_POST['BTNreset'])) {
 
 				echo "<pre>gfj_db reset to default values!\n </pre>";
 			}
 
-
+			if (isset($_POST['Approve'])) {
+				include('request.php');
+			}
 
 			if (isset($_POST['stats1'])) {
 				include('test.php');
@@ -157,19 +166,19 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			?>
 		</div>
 
-		
+
 		<form method="post">
 			<!--<input type="submit" name="CreateDB" value="Create" />
 			<input type="submit" name="CreateTablesDB" value="Fill" />
 			<input type="submit" name="DemoDataDB" value="Demo" /> -->
 			<input type="submit" name="ResetDB" value="Reset" />
 		</form>
-		
-		<div>
 
 
 
-		</div>
+
+
+	</div>
 
 
 </body>

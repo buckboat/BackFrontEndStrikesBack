@@ -34,7 +34,7 @@ define('CreateTable_User',
     LastLogin DATETIME
     );");
 
-
+//I think this needs to be combined with Badge table, basically BadgeAprroved is the only requirement for the request part and user and comment can be added to Badge table
 define('CreateTable_BadgeRequest',
     
     "CREATE TABLE IF NOT EXISTS BadgeRequest (
@@ -151,11 +151,11 @@ define('DummyData_BadgeRequest',
     "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, Comment) VALUES
     (2, 1,'Yeah', 'yes'),
     (3, 2,'Nope', 'no'),
-    (2, 2,'Dont Care', 'I dont care'),
-    (3, 10,'Squirrels', 'New badge for Squirrel Pics'),
-    (3, 10,'Rat', 'New badge for Rat Pics'),
-    (3, 10,'Possum', 'New badge for Possum Pics'),
-    (3, 10,'Racoon', 'New badge for Racoon Pics');");
+    
+    (3, 10,'Squirrels', 'New badge for Squirrel Pics')
+    
+    
+    ;");
     
 
 define('DummyData_EventBadge', 
