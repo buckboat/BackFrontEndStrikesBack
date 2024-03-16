@@ -151,16 +151,12 @@ define('DummyData_BadgeRequest',
     "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, Comment) VALUES
     (2, 1,'Yeah', 'yes'),
     (3, 2,'Nope', 'no'),
-    
-    (3, 10,'Squirrels', 'New badge for Squirrel Pics')
-    
-    
-    ;");
+    (3, 10,'Squirrels', 'New badge for Squirrel Pics');");
     
 
 define('DummyData_EventBadge', 
     
     "INSERT INTO EventBadge (BadgeID, DepartmentID, EventName, EventDescription, QRSVG, DateCreated, ActiveEvent) VALUES
-    (1, 1, 'Coding Competition', 'Solve all the problems', NULL, NOW(), TRUE),
+    (1, 1, 'Coding Competition', 'Solve all the problems', NULL, NOW(), FALSE),
     (2, 1, 'Squirrel Scavenger Hunt', 'Find all the squirrels', NULL, NOW(), TRUE);");
 ?>

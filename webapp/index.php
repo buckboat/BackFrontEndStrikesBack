@@ -113,6 +113,10 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			if (isset($_POST['badges'])) {
 				include('editbadge.php');
 			}
+			if (isset($_POST['events'])) {
+				include('events.php');
+			}
+
 
 			if (isset($_POST['edit'])) {
 				include('editbadge.php');
@@ -151,6 +155,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			}
 			if (isset($_POST['stats6'])) {
 			}
+
+
+
 			if (isset($_POST['CreateDB'])) {
 				include('../database_operations/specific_operations/CreateDatabase.php');
 			}
