@@ -96,7 +96,7 @@
             <tr>
                 
             <td class='checkbox'> 
-            <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'>  </td>
+            <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'> Meow </td>
                 <td>" . $row["BadgeName"] . "</td>
                 <td>" . $row["Comment"] . "</td>
                 
@@ -113,9 +113,9 @@
         ?>
 
 
-        <form method="post" style="padding-top:20px;">
+       <!-- <form method="post" style="padding-top:20px;">
             <input type="submit" name="Approve" value="Approve">
-        </form>
+        </form> -->
 
 
 </body>
