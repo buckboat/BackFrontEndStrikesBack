@@ -15,7 +15,7 @@
         }
 
         //api call
-        public function user($user){
+        public function getUser($user){
             $query = 'SELECT
                 Username,
                 LastLogin
@@ -30,8 +30,5 @@
             return $stmt;
         }
     }
-
-
-
 
 ?>
