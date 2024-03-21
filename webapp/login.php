@@ -4,7 +4,6 @@ error_reporting(0);
 ?>
 
 <?php
-$_SESSION['test'] = 'testSession';
 
 include 'topbar.php';
 
@@ -23,78 +22,72 @@ include 'topbar.php';
 
   <title>Login</title>
 
+  <!-- Login inputs -->
+
   <div class="loginpage">
 
     <form action="login.php">
       <label for="username">Username:</label>
       <input type="text" id="user" name="user" placeholder="Lets Rock," required><br><br>
       <label for="password">Password:</label>
-      <input type="password"  id="pass" name="pass" placeholder=" Baby!" required><br><br>
+      <input type="password" id="pass" name="pass" placeholder=" Baby!" required><br><br>
       <input type="submit" name="UserLogin" value="Lets Go!">
     </form>
 
   </div>
 
-  <!--on succesfull login index page will have more butteasdfasdsddfns to other pages-->
+
 
 
 
   <?php
 
-  //include_once dirname(__FILE__) . "../..//database_operations/DBConnection.php";
-  include "..//database_operations/DBConnection.php";
+  //db Connections
 
+  include "..//database_operations/DBConnection.php";
+  $engine = new DBConnection();
+  $conn = $engine->connect();
 
   @$username = $_REQUEST['user'];
   @$password = $_REQUEST['pass'];
 
-  $engine = new DBConnection();
-  $conn = $engine->connect();
 
 
+  // login input checks
+
+  // checks to see if inputs entered
   if (isset($_REQUEST['user']) && isset($_REQUEST['pass'])) {
 
-
+    // if empty redirect to login
     if (empty('user') || empty('pass')) {
 
       header("Location: login.php?error=its all wrong");
-      echo "wrong";
-      echo '2';
+
       exit();
+
+      // else find the username and password for the username
+
     } else {
 
       $sql = "SELECT * FROM User WHERE Username = '$username' AND Password='$password'";
 
-
-
-
       $result = mysqli_query($conn, $sql);
-
 
       $row = mysqli_fetch_assoc($result);
 
-
+      // if username and password matches save the session username and account type
 
       if ($row['Username'] === $username && $row['Password'] === $password) {
-
-        echo "passed";
-        echo $username;
-
 
         $sql =  "SELECT UserType  FROM User WHERE Username = '$username'";
 
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_array($result)) {
-          echo $row['UserType'];
+
           $_SESSION['type'] = intval($row['UserType']);
         }
 
-        // $row = mysqli_fetch_assoc($result);
-
-        //echo $;
-
-        //$UserType =  intval($result[0]);
 
         //password verify and password hash commands for php.
 
@@ -105,7 +98,7 @@ include 'topbar.php';
 
       $_SESSION['username'] = $username;
 
-      header('Location:index.php?error=workgin');
+      header('Location:index.php');
       exit();
     }
   }

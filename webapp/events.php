@@ -33,34 +33,6 @@
     $engine = new DBConnection();
     $conn = $engine->connect();
 
-
-
-    if (isset($_POST['togApprove'])) {
-
-        //echo $_POST['togApprove'];
-
-        $RequestBadgeID = $_POST['togApprove'];
-
-        //echo $RequestBadgeID;
-
-        // Update entry in database
-        $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        
-        if (mysqli_query($conn, $sql)) {
-
-            $sql = "UPDATE Badge SET BadgeApproved = 'true' WHERE RequestID = '$RequestBadgeID'  ";
-            //echo "Badge updated successfully.";
-        //} else {
-            //echo "Error updating badge: " . mysqli_error($conn);
-        }
-
-        // dont remember how requestbadge and bade where related it seems more like badge should pop 
-        // up in the request table if its not aproved and leave the request table when it is
-        // doesnt sound like two tables 
-        
-    }
-
-
     ?>
 
 

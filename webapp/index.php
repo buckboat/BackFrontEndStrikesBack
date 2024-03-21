@@ -5,13 +5,9 @@ error_reporting(0);
 
 <?php
 
+//checks to see if session was set if not redirects to login page
 
-
-//echo $_SESSION['type'];
-//echo $_SESSION['username'];
-
-
-if (!isset($_SESSION['username'])) { //if login in session is not set
+if (!isset($_SESSION['username'])) {
 	header("Location: login.php");
 }
 
@@ -36,6 +32,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 				include 'topbar.php';
 				include 'leftside.php';
 
+
+				//resets permission if user went to a page without permission
+
 				if ($_SESSION['Permisson'] == '1') {
 					include 'permisson.php';
 					$_SESSION['Permisson'] = '0';
@@ -50,14 +49,12 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 
 			<div>
 
+
 				<?php
 
 
-
-
-
 				require_once dirname(__FILE__, $levels = 2) . "/database_operations/Constants.php";
-
+				/*
 
 				// Create connection
 				$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -82,6 +79,7 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 					//echo "<pre>gfj_db found! no need to recreate and repopulate\n </pre>";
 				}
 				//echo "<pre>database is ready\n </pre>";
+				*/
 				?>
 
 			</div>
@@ -90,15 +88,6 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 		</div>
 	</div>
 	<div class="main">
-
-
-		<!-- form for navigation/execution 
-		<div class="login" style="padding-bottom:20px;">
-			<form method="post">
-				<input type="submit" name="Logout" value="Logout" />
-			</form>
-		</div>
-			-->
 
 		<div style="border: 4px solid black; padding: 5px; padding-bottom:20px; ">
 
@@ -116,32 +105,23 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			if (isset($_POST['events'])) {
 				include('events.php');
 			}
-
-
 			if (isset($_POST['edit'])) {
 				include('editbadge.php');
 			}
-
 			if (isset($_POST['requests'])) {
 				include('request.php');
 			}
-
 			if (isset($_POST['togApprove'])) {
 				include('request.php');
 			}
-
 			if (isset($_POST['UserLogin']))
 				include('login.php');
-
 			if (isset($_POST['BTNreset'])) {
-
 				echo "<pre>gfj_db reset to default values!\n </pre>";
 			}
-
 			if (isset($_POST['Approve'])) {
 				include('request.php');
 			}
-
 			if (isset($_POST['stats1'])) {
 				include('test.php');
 			}
@@ -155,9 +135,6 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			}
 			if (isset($_POST['stats6'])) {
 			}
-
-
-
 			if (isset($_POST['CreateDB'])) {
 				include('../database_operations/specific_operations/CreateDatabase.php');
 			}
