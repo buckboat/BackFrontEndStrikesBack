@@ -29,6 +29,13 @@
 
             return $stmt;
         }
+
+        //api call
+        public function postProfilePic($image) {
+            //TODO
+        }
     }
+
+
 
 ?>

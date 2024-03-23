@@ -8,7 +8,6 @@
     
     // defined('') ? null : define('', );
 
-    echo("Site root: ".SITE_ROOT);
     //
     require_once(SITE_ROOT.DS.'database_operations'.DS."DBConnection.php");
 
