@@ -114,6 +114,12 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['togApprove'])) {
 				include('request.php');
 			}
+			if (isset($_POST['editRequestIndex'])) {
+				include('individualRequest.php');
+			}
+			if (isset($_POST['editRequest'])) {
+				include('individualRequest.php');
+			}
 			if (isset($_POST['UserLogin']))
 				include('login.php');
 			if (isset($_POST['BTNreset'])) {

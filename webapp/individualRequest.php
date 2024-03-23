@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Request Index </title>
+    <title>Individual Request</title>
     <link href="style.css" rel="stylesheet" />
 
     <style>
@@ -18,15 +18,13 @@
             padding: 8px;
             text-align: center;
         }
-
-
     </style>
 
 </head>
 
 <body>
 
-    <h1 style="text-align: center;">Requests</h1>
+    <h1 style="text-align: center;">Edit Request</h1>
 
 
     <?php
@@ -35,24 +33,38 @@
     $engine = new DBConnection();
     $conn = $engine->connect();
 
+    if (isset($_POST['editRequest'])) {
+
+        $RequestBadgeID = $_POST['editRequest'];
+
+    } else {
+
+        $RequestBadgeID = $_POST['editRequestIndex'];
+    }
 
 
-    if (isset($_POST['togApprove'])) {
+    if (isset($_POST['editRequest'])) {
 
         //echo $_POST['togApprove'];
 
-        $RequestBadgeID = $_POST['togApprove'];
+        $EditRequestBadgeID = $_POST['editRequest'];
+        $EditRequestBadgeName = $_POST['requestName'];
+        $EditRequestBadgeDesc = $_POST['requestDesc'];
+        $EditRequestBadgeCrit = $_POST['requestCrit'];
+        $EditRequestBadgeCom = $_POST['requestCom'];
+
 
         //echo $RequestBadgeID;
 
         // Update entry in database
         // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        $sql = "UPDATE BadgeRequest SET RequestApproved = TRUE WHERE RequestID = '$RequestBadgeID' ";
+        $sql = "UPDATE BadgeRequest SET BadgeName = '$EditRequestBadgeName ', BadgeDesc = '$EditRequestBadgeDesc', BadgeCriteria = '$EditRequestBadgeCrit', Comment = '$EditRequestBadgeCom' WHERE RequestID = '$EditRequestBadgeID' ";
 
         if (mysqli_query($conn, $sql)) {
 
 
-            $sql = "UPDATE Badge SET BadgeApproved = TRUE WHERE BadgeID = '$RequestBadgeID'  ";
+            $sql = "UPDATE Badge SET BadgeApproved = TRUE WHERE RequestID = '$EditRequestBadgeID'  ";
+
             //echo "Badge updated successfully.";
             //} else {
             //echo "Error updating badge: " . mysqli_error($conn);
@@ -81,19 +93,19 @@
         <?php
 
         // Fetch data from the "benefits" table
-        $sql = "SELECT * FROM BadgeRequest";
+        $sql = "SELECT * FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             //echo "<form method='post'>";
             echo "<table>";
             echo "<tr>
-            <th>Approve?</th>
+
             <th>Badge Name</th>
             <th>Description</th>
             <th>Criteria</th>
             <th>Comment</th>
-            <th>Click to Edit</th>
+
             
           </tr>";
 
@@ -106,17 +118,19 @@
 
                 echo "
             <tr>
-                
-            <td class='checkbox'> 
-            <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'>  </td>
-                <td>" . $row["BadgeName"] . "</td>
-                <td>" . $row["BadgeDesc"] . "</td>
-                <td>" . $row["BadgeCriteria"] . "</td>
-                <td>" . $row["Comment"] . "</td>
-                <td> <input type='submit' id='editRequestIndex' name='editRequestIndex' value='" . $row["RequestID"] . "'> </td>
+
+            <td><input type='text' id='requestName' name='requestName' value=" . $row['BadgeName'] . " required></td>
+            <td><input type='text' id='requestDesc' name='requestDesc' value=" . $row['BadgeDesc'] . " required></td>
+            <td><input type='text' id='requestCrit' name='requestCrit' value=" . $row['BadgeCriteria'] . " required></td>
+            <td><input type='text' id='requestCom' name='requestCom' value=" . $row['Comment'] . " required></td>
+
+            <input type='submit' id='editRequest' name='editRequest' value='Edit " . $row['RequestID'] . " '>
+
               </tr>";
             }
-            echo "</table> </form>";
+            echo " </table>
+            
+            </form>";
             //post request id to indvidiaul requestbadge page to edit the requestbadge
         } else {
             echo "0 results";

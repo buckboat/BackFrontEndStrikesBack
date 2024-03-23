@@ -30,7 +30,7 @@
 }
 
 .main {
-
+    cursor: url('path-to-image.png'), auto;	
     justify-content: center;
     padding-left: 200px;
     padding-right: 100px;

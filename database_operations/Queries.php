@@ -45,6 +45,7 @@ define('CreateTable_BadgeRequest',
     BadgeDesc VARCHAR(200),
     BadgeCriteria VARCHAR(100),
     BadgeIcon LONGBLOB,
+    RequestApproved boolean,
     Comment VARCHAR(50),
     FOREIGN KEY (UserID) REFERENCES User(UserID),
     FOREIGN KEY (BadgeID) REFERENCES Badge(BadgeID)
@@ -148,10 +149,10 @@ define('DummyData_UserDepartment',
 
 define('DummyData_BadgeRequest', 
     
-    "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, Comment) VALUES
-    (2, 1,'Yeah', 'yes'),
-    (3, 2,'Nope', 'no'),
-    (3, 10,'Squirrels', 'New badge for Squirrel Pics');");
+    "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, RequestApproved, Comment) VALUES
+    (2, 1,'Yeah', FALSE, 'yes'),
+    (3, 2,'Nope', TRUE, 'no'),
+    (3, 10,'Squirrels', FALSE, 'New badge for Squirrel Pics');");
     
 
 define('DummyData_EventBadge', 
