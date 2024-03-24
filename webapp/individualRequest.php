@@ -26,7 +26,6 @@
 
     <h1 style="text-align: center;">Edit Request</h1>
 
-
     <?php
 
     include "..//database_operations/DBConnection.php";
@@ -35,44 +34,38 @@
 
     if (isset($_POST['editRequest'])) {
 
-        $RequestBadgeID = $_POST['editRequest'];
-
+        $RequestBadgeID = $_POST['hiddenID'];
+        
     } else {
 
         $RequestBadgeID = $_POST['editRequestIndex'];
+     
     }
 
 
     if (isset($_POST['editRequest'])) {
 
-        //echo $_POST['togApprove'];
-
-        $EditRequestBadgeID = $_POST['editRequest'];
+        $EditRequestBadgeID = $_POST['hiddenID'];
         $EditRequestBadgeName = $_POST['requestName'];
         $EditRequestBadgeDesc = $_POST['requestDesc'];
         $EditRequestBadgeCrit = $_POST['requestCrit'];
         $EditRequestBadgeCom = $_POST['requestCom'];
 
-
-        //echo $RequestBadgeID;
-
         // Update entry in database
+
         // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        $sql = "UPDATE BadgeRequest SET BadgeName = '$EditRequestBadgeName ', BadgeDesc = '$EditRequestBadgeDesc', BadgeCriteria = '$EditRequestBadgeCrit', Comment = '$EditRequestBadgeCom' WHERE RequestID = '$EditRequestBadgeID' ";
+        $sql = "UPDATE BadgeRequest SET BadgeName = '$EditRequestBadgeName', BadgeDesc = '$EditRequestBadgeDesc', BadgeCriteria ='$EditRequestBadgeCrit' , Comment='$EditRequestBadgeCom' WHERE RequestID = '$EditRequestBadgeID' ";
+
 
         if (mysqli_query($conn, $sql)) {
 
-
-            $sql = "UPDATE Badge SET BadgeApproved = TRUE WHERE RequestID = '$EditRequestBadgeID'  ";
-
             //echo "Badge updated successfully.";
-            //} else {
-            //echo "Error updating badge: " . mysqli_error($conn);
-        }
 
-        // dont remember how requestbadge and bade where related it seems more like badge should pop 
-        // up in the request table if its not aproved and leave the request table when it is
-        // doesnt sound like two tables 
+        } else {
+
+            //echo "Error updating badge: " . mysqli_error($conn);
+
+        }
 
     }
 
@@ -105,11 +98,12 @@
             <th>Description</th>
             <th>Criteria</th>
             <th>Comment</th>
+            <th>Delete</th>
 
             
           </tr>";
 
-            // Output data of each row
+            // Output data
             while ($row = $result->fetch_assoc()) {
 
                 if ($row["RequestApproved"] == TRUE) {
@@ -118,20 +112,22 @@
 
                 echo "
             <tr>
-
+            
             <td><input type='text' id='requestName' name='requestName' value=" . $row['BadgeName'] . " required></td>
             <td><input type='text' id='requestDesc' name='requestDesc' value=" . $row['BadgeDesc'] . " required></td>
             <td><input type='text' id='requestCrit' name='requestCrit' value=" . $row['BadgeCriteria'] . " required></td>
-            <td><input type='text' id='requestCom' name='requestCom' value=" . $row['Comment'] . " required></td>
+            <td><input type='text' id='requestCom' name='requestCom' value=" . $row['Comment'] . " required></td> 
+            <td><input type='submit' id='deleteRequest' name='deleteRequest' value='" . $row['RequestID'] . " '>
+            <input type='hidden' name='hiddenID' value='" . $row['RequestID'] . "'> </td>
 
-            <input type='submit' id='editRequest' name='editRequest' value='Edit " . $row['RequestID'] . " '>
+            <input type='submit' id='editRequest' name='editRequest' value='Submit Changes'>
 
               </tr>";
             }
             echo " </table>
             
             </form>";
-            //post request id to indvidiaul requestbadge page to edit the requestbadge
+
         } else {
             echo "0 results";
         }
@@ -139,11 +135,6 @@
 
 
         ?>
-
-
-        <!-- <form method="post" style="padding-top:20px;">
-            <input type="submit" name="Approve" value="Approve">
-        </form> -->
 
 
 </body>

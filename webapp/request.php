@@ -18,8 +18,6 @@
             padding: 8px;
             text-align: center;
         }
-
-
     </style>
 
 </head>
@@ -52,16 +50,42 @@
         if (mysqli_query($conn, $sql)) {
 
 
+            $EditRequestBadgeName = $_POST['requestName'];
+            //echo $EditRequestBadgeNam;
+
+            $EditRequestBadgeDesc = $_POST['requestDesc'];
+            //echo $EditRequestBadgeDesc ;
+
+            $EditRequestBadgeCrit = $_POST['requestCrit'];
+            //echo $EditRequestBadgeCrit;
+
+            $EditRequestBadgeCom = $_POST['requestCom'];
+
             $sql = "UPDATE Badge SET BadgeApproved = TRUE WHERE BadgeID = '$RequestBadgeID'  ";
             //echo "Badge updated successfully.";
+
+
             //} else {
+
             //echo "Error updating badge: " . mysqli_error($conn);
+
         }
 
-        // dont remember how requestbadge and bade where related it seems more like badge should pop 
-        // up in the request table if its not aproved and leave the request table when it is
-        // doesnt sound like two tables 
 
+
+    }
+
+    if (isset($_POST['deleteRequest'])) {
+
+        $EditRequestBadgeID = $_POST['hiddenID'];
+        $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$EditRequestBadgeID' ";
+
+        if (mysqli_query($conn, $sql)) {
+
+            //echo "Badge updated successfully.";
+        } else {
+            //echo "Error updating badge: " . mysqli_error($conn);
+        }
     }
 
 
@@ -87,8 +111,14 @@
         if ($result->num_rows > 0) {
             //echo "<form method='post'>";
             echo "<table>";
-            echo "<tr>
-            <th>Approve?</th>
+            echo "<tr>";
+
+            if ($_SESSION['type'] == 0) { //
+                echo "<th>Approve?</th>";
+            }
+
+
+            echo "
             <th>Badge Name</th>
             <th>Description</th>
             <th>Criteria</th>
@@ -104,12 +134,15 @@
                     continue;
                 }
 
-                echo "
-            <tr>
-                
-            <td class='checkbox'> 
-            <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'>  </td>
-                <td>" . $row["BadgeName"] . "</td>
+                echo "<tr>";
+
+                if ($_SESSION['type'] == 0) { //
+
+                    echo "<td class='checkbox'> <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'>  </td>";
+                }
+
+                echo " <td>" . $row["BadgeName"] . "</td>
+
                 <td>" . $row["BadgeDesc"] . "</td>
                 <td>" . $row["BadgeCriteria"] . "</td>
                 <td>" . $row["Comment"] . "</td>
@@ -117,7 +150,7 @@
               </tr>";
             }
             echo "</table> </form>";
-            //post request id to indvidiaul requestbadge page to edit the requestbadge
+
         } else {
             echo "0 results";
         }
@@ -125,11 +158,6 @@
 
 
         ?>
-
-
-        <!-- <form method="post" style="padding-top:20px;">
-            <input type="submit" name="Approve" value="Approve">
-        </form> -->
 
 
 </body>

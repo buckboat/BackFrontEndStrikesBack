@@ -120,6 +120,13 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['editRequest'])) {
 				include('individualRequest.php');
 			}
+
+			if (isset($_POST['deleteRequest'])) {
+				include('request.php');
+			}
+
+
+			
 			if (isset($_POST['UserLogin']))
 				include('login.php');
 			if (isset($_POST['BTNreset'])) {
@@ -129,7 +136,8 @@ if (!isset($_SESSION['username'])) {
 				include('request.php');
 			}
 			if (isset($_POST['stats1'])) {
-				include('test.php');
+				//include('user_most_badges.html');
+				header("Location:user_most_badges.html");
 			}
 			if (isset($_POST['stats2'])) {
 			}
