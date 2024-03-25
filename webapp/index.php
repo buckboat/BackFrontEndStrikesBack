@@ -93,6 +93,9 @@ if (!isset($_SESSION['username'])) {
 
 			<!-- button functionality -->
 			<?php
+			if (isset($_POST['mems'])) {
+				include('memberinfo.php');
+			}
 			if (isset($_POST['Logout'])) {
 				include('logout.php');
 			}
