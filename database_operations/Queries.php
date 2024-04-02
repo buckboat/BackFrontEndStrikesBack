@@ -18,9 +18,10 @@ define('CreateTable_Badge',
     BadgeName VARCHAR(50),
     BadgeDesc VARCHAR(200),
     BadgeCriteria VARCHAR(100),
-    BadgeIcon LONGBLOB,
-    BadgeCreated DATETIME,
-    BadgeSteps INT(11)
+    BadgeIcon INT(11),
+    BadgeRarity INT(11),
+    BadgeSteps INT(11),
+    BadgeCreated DATETIME
     );");
 
 
@@ -45,7 +46,9 @@ define('CreateTable_BadgeRequest',
     BadgeName VARCHAR(50),
     BadgeDesc VARCHAR(200),
     BadgeCriteria VARCHAR(100),
-    BadgeIcon LONGBLOB,
+    BadgeIcon INT(11),
+    BadgeRarity INT(11),
+    BadgeSteps INT(11),
     Comment VARCHAR(50),
     isVisible tinyint(1),
     FOREIGN KEY (UserID) REFERENCES User(UserID),
@@ -109,17 +112,17 @@ define('DummyData_User',
 
 define('DummyData_Badge', 
     
-    "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeCreated, BadgeApproved, BadgeSteps) VALUES
-    ('Badge 1', 'Description 1', 'Criteria 1', NULL, NOW(), TRUE, 1),
-    ('Badge 2', 'Description 2', 'Criteria 2', NULL, NOW(), TRUE 1),
-    ('Badge 3', 'Description 3', 'Criteria 3', NULL, NOW(), TRUE 3),
-    ('Badge 4', 'Description 4', 'Criteria 4', NULL, NOW(), TRUE 2),
-    ('Badge 5', 'Description 5', 'Criteria 5', NULL, NOW(), TRUE 5),
-    ('Badge 6', 'Description 6', 'Criteria 6', NULL, NOW(), TRUE 4),
-    ('Badge 7', 'Description 7', 'Criteria 7', NULL, NOW(), TRUE 5),
-    ('Badge 8', 'Description 8', 'Criteria 8', NULL, NOW(), TRUE 10),
-    ('Badge 9', 'Description 9', 'Criteria 9', NULL, NOW(), TRUE 1),
-    ('Badge 10', 'Description 10', 'Criteria 10', NULL, NOW(), FALSE 2);");
+    "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, BadgeCreated, BadgeApproved) VALUES
+    ('Badge 1', 'Description 1', 'Criteria 1', 1, 1, 1, NOW(), TRUE),
+    ('Badge 2', 'Description 2', 'Criteria 2', 5, 2, 1, NOW(), TRUE),
+    ('Badge 3', 'Description 3', 'Criteria 3', 3, 3, 3, NOW(), TRUE),
+    ('Badge 4', 'Description 4', 'Criteria 4', 2, 4, 2, NOW(), TRUE),
+    ('Badge 5', 'Description 5', 'Criteria 5', 7, 1, 5, NOW(), TRUE),
+    ('Badge 6', 'Description 6', 'Criteria 6', 8, 2, 4, NOW(), TRUE),
+    ('Badge 7', 'Description 7', 'Criteria 7', 10, 3, 5, NOW(), TRUE),
+    ('Badge 8', 'Description 8', 'Criteria 8', 2, 4, 10, NOW(), TRUE),
+    ('Badge 9', 'Description 9', 'Criteria 9', 4, 1, 1, NOW(), TRUE),
+    ('Badge 10', 'Description 10', 'Criteria 10', 6, 2, 2, NOW(), FALSE);");
 
 
 define('DummyData_Department', 
@@ -151,11 +154,11 @@ define('DummyData_UserDepartment',
 
 define('DummyData_BadgeRequest', 
     
-    "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, RequestApproved, Comment, isVisible) VALUES
-    (2, 1,'Yeah', FALSE, 'yes', 1),
-    (3, 2,'Nope', TRUE, 'no', 1),
-    (3, 10,'Squirrels', FALSE, 'New badge for Squirrel Pics', 0);");
-    
+    "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, Comment, isVisible) VALUES
+    (2, 1, 'Yeah', 'A New Badge', 'yes', 1, 1, 1, 'comment', 1),
+    (3, 2, 'nope', 'this badge is cool', 'do something', 5, 2, 1, 'no', 1),
+    (3, 10, 'Squirrels', 'too many squirrels', 'take the squirrels', 3, 3, 3, 'New badge for Squirrel Pics', 0);");
+
 
 define('DummyData_EventBadge', 
     
