@@ -8,7 +8,7 @@
     //setup user object
     $user = new User($db);
 
-    $result = $user->getUser($_GET["username"]);
+    $result = $user->getUser($_GET["userID"]);
 
     if ($result->num_rows > 0) {
         $user_arr = array();
