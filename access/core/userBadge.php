@@ -2,44 +2,38 @@
 
     class UserBadge {
         //db stuff
-        private $engine;
-        private $table = 'UserBadge';
-        private $badgeTable = 'Badge';
+        private static $table = 'UserBadge';
+        private static $badgeTable = 'Badge';
 
-        //user properties
-        public $UserID;
-        public $Badges;
-
-        //constructor
-        public function __construct($db){
-            $this->engine = $db;
-            $this->Badges = array();
-        }
-
-        //api call
-        public function getUserBadge($userid, $badgeid){
-            $query = 'SELECT a.*, b.BadgeStepsCompleted FROM '. $this->badgeTable .' a 
-            INNER JOIN '. $this->table .' b ON a.BadgeID = b.BadgeID 
+        public static function getUserBadge($userid, $badgeid){
+            $query = 'SELECT a.*, b.BadgeStepsCompleted FROM '. UserBadge::$badgeTable .' a 
+            INNER JOIN '. UserBadge::$table .' b ON a.BadgeID = b.BadgeID 
             WHERE b.UserID = "'.$userid.'" AND b.BadgeID = "'.$badgeid.'";';
 
-            $conn = $this->engine->connect();
-            $stmt = $conn->query($query);
-            $conn->close();
-
-            return $stmt;
+            return $query;
         }
 
-        //api call
-        public function getUserBadges($userid){
-            $query = 'SELECT a.*, b.BadgeStepsCompleted FROM '. $this->badgeTable .' a 
-            INNER JOIN '. $this->table .' b ON a.BadgeID = b.BadgeID 
+        public static function getUserBadges($userid){
+            $query = 'SELECT a.*, b.BadgeStepsCompleted FROM '. UserBadge::$badgeTable .' a 
+            INNER JOIN '. UserBadge::$table .' b ON a.BadgeID = b.BadgeID 
             WHERE b.UserID = "'.$userid.'";';
 
-            $conn = $this->engine->connect();
-            $stmt = $conn->query($query);
-            $conn->close();
+            return $query;
+        }
 
-            return $stmt;
+        public static function insertUserBadge($userid, $badgeid, $steps) {
+            $query = 'INSERT INTO ' . UserBadge::$table .' (userID, badgeID, BadgeStepsCompleted)
+            VALUES ('.$userid.', '.$badgeid.', '.$steps.');';
+
+            return $query;
+        }
+
+        public static function updateUserBadge($userid, $badgeid, $steps) {
+            $query = 'UPDATE '.UserBadge::$table .'
+            SET BadgeStepsCompleted = '.$steps.' 
+            WHERE UserID = '.$userid.' AND BadgeID = '.$badgeid.';';
+
+            return $query;
         }
     }
 

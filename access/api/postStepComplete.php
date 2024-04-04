@@ -6,43 +6,24 @@
     include_once('../core/initialize.php');
 
     //setup user object
-    $userBadge = new UserBadge($db);
+    $result = $db->run(UserBadge::getUserBadge($_GET["userID"], $_GET["badgeID"]));
+    $steps = 1;
+    $output = array();
 
-    $result = $userBadge->getUserBadge($_GET["userID"], $_GET["badgeID"]);
-    
     if ($result->num_rows > 0) {
-        $badge_arr = array();
-        $badge_arr['data'] = array();
-        $badge_arr['data']['completed_badges'] = array();
-        $badge_arr['data']['in_progress'] = array();
-
-        while($row = $result->fetch_assoc()){
-            extract($row);
-            $badge_item = array(
-                'BadgeID' => $BadgeID,
-                'BadgeName' => $BadgeName,
-                'BadgeDesc' => $BadgeDesc,
-                'BadgeCriteria' => $BadgeCriteria,
-                'BadgeIcon' => $BadgeIcon,
-                'BadgeCreated' => $BadgeCreated,
-                'BadgeSteps' => $BadgeSteps,
-                'BadgeStepsCompleted' => $BadgeStepsCompleted
-            );
-
-            if ($BadgeSteps == $BadgeStepsCompleted) {
-                array_push($badge_arr['data']['completed'], $badge_item);
-            }
-            else {
-                array_push($badge_arr['data']['in_progress'], $badge_item);
-            }
+        extract($result->fetch_assoc());
+        if ($BadgeStepsCompleted < $BadgeSteps) {
+            $steps = $BadgeStepsCompleted + 1;
+            $db->run(UserBadge::updateUserBadge($_GET["userID"], $_GET["badgeID"], $steps));
         }
-        
-        //convert to JSON and output
-        echo json_encode($badge_arr);
+        else {
+            $output['error'] = 'Badge already complete.';
+        }
     }
     else {
-        echo json_encode(array('message' => 'No users found.'));
+        $db->run(UserBadge::insertUserBadge($_GET["userID"], $_GET["badgeID"], $steps));
     }
-
+    $output['message'] = "POST completed successfuly";
+    echo json_encode($output);
 
 ?>

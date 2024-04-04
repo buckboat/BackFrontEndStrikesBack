@@ -6,9 +6,8 @@
     include_once('../core/initialize.php');
 
     //setup user object
-    $user = new User($db);
 
-    $result = $user->getUser($_GET["userID"]);
+    $result = $db->run(User::getUser($_GET["userID"]));
 
     if ($result->num_rows > 0) {
         $user_arr = array();
@@ -18,8 +17,10 @@
             extract($row);
             $user_item = array(
                 'Username' => $Username,
-                'LastLogin' => $LastLogin
+                'LastLogin' => $LastLogin,
+                'ProfilePictureID' => $ProfilePictureID
             );
+
             array_push($user_arr['data'], $user_item);
         }
         //convert to JSON and output

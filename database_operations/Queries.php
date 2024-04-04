@@ -112,17 +112,17 @@ define('DummyData_User',
 
 define('DummyData_Badge', 
     
-    "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, BadgeCreated, BadgeApproved) VALUES
-    ('Badge 1', 'Description 1', 'Criteria 1', 1, 1, 1, NOW(), TRUE),
-    ('Badge 2', 'Description 2', 'Criteria 2', 5, 2, 1, NOW(), TRUE),
-    ('Badge 3', 'Description 3', 'Criteria 3', 3, 3, 3, NOW(), TRUE),
-    ('Badge 4', 'Description 4', 'Criteria 4', 2, 4, 2, NOW(), TRUE),
-    ('Badge 5', 'Description 5', 'Criteria 5', 7, 1, 5, NOW(), TRUE),
-    ('Badge 6', 'Description 6', 'Criteria 6', 8, 2, 4, NOW(), TRUE),
-    ('Badge 7', 'Description 7', 'Criteria 7', 10, 3, 5, NOW(), TRUE),
-    ('Badge 8', 'Description 8', 'Criteria 8', 2, 4, 10, NOW(), TRUE),
-    ('Badge 9', 'Description 9', 'Criteria 9', 4, 1, 1, NOW(), TRUE),
-    ('Badge 10', 'Description 10', 'Criteria 10', 6, 2, 2, NOW(), FALSE);");
+    "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, BadgeCreated) VALUES
+    ('Badge 1', 'Description 1', 'Criteria 1', 1, 1, 1, NOW()),
+    ('Badge 2', 'Description 2', 'Criteria 2', 5, 2, 1, NOW()),
+    ('Badge 3', 'Description 3', 'Criteria 3', 3, 3, 3, NOW()),
+    ('Badge 4', 'Description 4', 'Criteria 4', 2, 4, 2, NOW()),
+    ('Badge 5', 'Description 5', 'Criteria 5', 7, 1, 5, NOW()),
+    ('Badge 6', 'Description 6', 'Criteria 6', 8, 2, 4, NOW()),
+    ('Badge 7', 'Description 7', 'Criteria 7', 10, 3, 5, NOW()),
+    ('Badge 8', 'Description 8', 'Criteria 8', 2, 4, 10, NOW()),
+    ('Badge 9', 'Description 9', 'Criteria 9', 4, 1, 1, NOW()),
+    ('Badge 10', 'Description 10', 'Criteria 10', 6, 2, 2, NOW());");
 
 
 define('DummyData_Department', 
@@ -135,11 +135,11 @@ define('DummyData_UserBadge',
     
     "INSERT INTO UserBadge (UserID, BadgeID, BadgeStepsCompleted) VALUES
     (1, 1, 1),
-    (2, 1, 0),
+    (2, 1, 1),
     (2, 2, 1),
     (3, 3, 2),
     (4, 4, 1),
-    (5, 5, 3);");
+    (5, 5, 5);");
 
 
 define('DummyData_UserDepartment', 

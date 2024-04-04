@@ -1,38 +1,28 @@
 <?php
 
     class User {
-        //db stuff
-        private $engine;
-        private $table = 'User';
-
-        //user properties
-        public $username;
-        public $last_login;
-
-        //constructor
-        public function __construct($db){
-            $this->engine = $db;
-        }
+        private static $table = 'User';
 
         //api call
-        public function getUser($user){
+        public static function getUser($user){
             $query = 'SELECT
                 Username,
-                LastLogin
+                LastLogin,
+                ProfilePictureID
                 FROM 
-                '. $this->table .'
-                 WHERE Username = "'.$user.'";';
+                '. User::$table .'
+                 WHERE UserID = "'.$user.'";';
                  
-            $conn = $this->engine->connect();
-            $stmt = $conn->query($query);
-            $conn->close();
-
-            return $stmt;
+            return $query;
         }
 
         //api call
-        public function postProfilePic($image) {
-            //TODO
+        public static function postProfilePic($userid, $picid) {
+            $query = 'UPDATE '. User::$table .' 
+                SET ProfilePictureID = '.$picid.'
+                WHERE UserID = '.$userid.';';
+    
+            return $query;
         }
     }
 

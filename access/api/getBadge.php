@@ -5,10 +5,7 @@
     //initialize api
     include_once('../core/initialize.php');
 
-    //setup user object
-    $badge = new Badge($db);
-
-    $result = $badge->getBadge($_GET["badgeID"]);
+    $result = $db->run(Badge::getBadge($_GET["badgeID"]));
 
     if ($result->num_rows > 0) {
         $badge_arr = array();

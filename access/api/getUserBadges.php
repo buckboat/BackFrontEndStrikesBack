@@ -5,10 +5,7 @@
     //initialize api
     include_once('../core/initialize.php');
 
-    //setup user object
-    $userBadge = new UserBadge($db);
-
-    $result = $userBadge->getUserBadges($_GET["userID"]);
+    $result = $db->run(UserBadge::getUserBadges($_GET["userID"]));
 
     if ($result->num_rows > 0) {
         $badge_arr = array();
@@ -31,7 +28,7 @@
                 'BadgeStepsCompleted' => $BadgeStepsCompleted
             );
             if ($BadgeSteps == $BadgeStepsCompleted) {
-                array_push($badge_arr['data']['completed'], $badge_item);
+                array_push($badge_arr['data']['completed_badges'], $badge_item);
             } else {
                 array_push($badge_arr['data']['in_progress'], $badge_item);
             }
