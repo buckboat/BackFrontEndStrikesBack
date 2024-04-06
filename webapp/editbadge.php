@@ -2,6 +2,22 @@
 <head>
 <title>Edit Badge</title>
 <link href="style.css" rel="stylesheet"/>
+
+<style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -23,7 +39,7 @@ if(isset($_POST['edit'])){
     if(mysqli_query($conn, $sql)){
         echo "Request submitted successfully. It will be updated after approval.";
         // Redirect to View Badges page after submitting the request
-        header("Location: view_badges.php");
+        header("Location: viewbadge.php");
         exit(); // Make sure to exit after redirecting
     } else {
         echo "Error submitting request: " . mysqli_error($conn);
@@ -38,6 +54,9 @@ $result = mysqli_query($conn, $sql);
 <!-- Form to edit badge -->
 <form method="post" action="">
     <?php
+
+
+
     // Loop through each badge and display its information
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<div>";
@@ -51,6 +70,8 @@ $result = mysqli_query($conn, $sql);
         echo "<button type='submit' name='edit'>Submit Request</button>";
         echo "</div>";
     }
+
+   
     ?>
 </form>
 

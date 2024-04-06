@@ -114,6 +114,9 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['deleteMember'])) {
 				include('memberinfo.php');
 			}
+
+
+
 			if (isset($_POST['Logout'])) {
 				include('logout.php');
 			}
@@ -126,6 +129,10 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['events'])) {
 				include('events.php');
 			}
+
+
+
+
 			if (isset($_POST['edit'])) {
 				include('editbadge.php');
 			}

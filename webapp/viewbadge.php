@@ -7,6 +7,7 @@
 
 <?php
 
+
 include "..//database_operations/DBConnection.php";
 $engine = new DBConnection();
 $conn = $engine->connect();
@@ -19,7 +20,7 @@ $conn = $engine->connect();
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div>";
-            echo "<img src='data:image/jpeg;base64," . base64_encode($row['BadgeIcon']) . "' width='50' height='50'>";
+            //echo "<img src='data:image/jpeg;base64," . base64_encode($row['BadgeIcon']) . "' width='50' height='50'>";
             echo "<p>" . $row['BadgeName'] . "</p>";
             echo "<a href='badgeinfo.php?badgeid=" . $row['BadgeID'] . "'>More Info</a>";
             echo "</div>";
@@ -29,5 +30,7 @@ $conn = $engine->connect();
     }
 
     ?>
+
+
 </body>
 </html>
