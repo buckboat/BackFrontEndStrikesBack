@@ -92,9 +92,10 @@
             // Output data
             while ($row = $result->fetch_assoc()) {
 
+                /*
                 if ($row["RequestApproved"] == TRUE) {
                     continue;
-                }
+                }*/
 
                 echo "
             <tr>
