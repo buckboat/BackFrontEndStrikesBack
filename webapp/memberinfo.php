@@ -33,6 +33,11 @@
     $engine = new DBConnection();
     $conn = $engine->connect();
 
+    if ($_SESSION['type'] == 1) { //if login in session is not set
+        $_SESSION['Permisson'] = '1';
+        header("Location: index.php");
+    }
+
     ?>
 
 
@@ -53,6 +58,7 @@
             <th>Username</th>
             <th>User Type</th>
             <th>Last Login</th>
+            <th>Click to Edit</th>
             
           </tr>";
 
@@ -76,6 +82,7 @@
 
                   echo"  </td>
                 <td>" . $row["LastLogin"] . "</td>
+                <td> <input type='submit' id='editmems' name='editmems' value='" . $row["UserID"] . "'> </td>
               </tr>";
             }
             echo "</table> </form>";
@@ -85,11 +92,11 @@
 
         ?>
 
-    <form style="padding-bottom:5px;" method="post">
+    <form style="padding-top:25px;" method="post">
 		<input type="submit" name="addmems" value="Add Members" />
 	</form>
 
-    <form style="padding-bottom:5px;" method="post">
+    <form style="padding-top:5px;" method="post">
 		<input type="submit" name="delmems" value="Delete Members" />
 	</form>
 	

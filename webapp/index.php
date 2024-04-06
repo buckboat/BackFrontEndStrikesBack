@@ -96,6 +96,24 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['mems'])) {
 				include('memberinfo.php');
 			}
+			if (isset($_POST['addmems'])) {
+				include('addmember.php');
+			}
+			if (isset($_POST['addMember'])) {
+				include('memberinfo.php');
+			}
+			if (isset($_POST['editmems'])) {
+				include('editmember.php');
+			}
+			if (isset($_POST['editUser'])) {
+				include('memberinfo.php');
+			}
+			if (isset($_POST['delmems'])) {
+				include('deletemember.php');
+			}
+			if (isset($_POST['deleteMember'])) {
+				include('memberinfo.php');
+			}
 			if (isset($_POST['Logout'])) {
 				include('logout.php');
 			}
