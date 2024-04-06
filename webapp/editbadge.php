@@ -18,32 +18,40 @@ if(isset($_POST['edit'])){
     $badge_desc = $_POST['badge_desc'];
     $badge_criteria = $_POST['badge_criteria'];
     
-    // Update entry in database
-    $sql = "UPDATE Badge SET BadgeName = '$badge_name', BadgeDesc = '$badge_desc', BadgeCriteria = '$badge_criteria' WHERE BadgeID = $badge_id";
+    // Create a request to update the badge
+    $sql = "INSERT INTO BadgeRequest (BadgeID, BadgeName, BadgeDesc, BadgeCriteria, Comment) VALUES ('$badge_id', '$badge_name', '$badge_desc', '$badge_criteria', 'Requested changes')";
     if(mysqli_query($conn, $sql)){
-        echo "Badge updated successfully.";
+        echo "Request submitted successfully. It will be updated after approval.";
+        // Redirect to View Badges page after submitting the request
+        header("Location: view_badges.php");
+        exit(); // Make sure to exit after redirecting
     } else {
-        echo "Error updating badge: " . mysqli_error($conn);
+        echo "Error submitting request: " . mysqli_error($conn);
     }
 }
 
-// Fetch the badge data
-//$badge_id = $_GET['id'];
+// Fetch all badges from the database
 $sql = "SELECT * FROM Badge";
 $result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 ?>
 
 <!-- Form to edit badge -->
 <form method="post" action="">
-    <input type="hidden" name="badge_id" value="<?php echo $row['BadgeID']; ?>">
-    <label for="badge_name">Badge Name:</label>
-    <input type="text" id="badge_name" name="badge_name" value="<?php echo $row['BadgeName']; ?>" required><br>
-    <label for="badge_desc">Badge Description:</label>
-    <input type="text" id="badge_desc" name="badge_desc" value="<?php echo $row['BadgeDesc']; ?>" required><br>
-    <label for="badge_criteria">Badge Criteria:</label>
-    <input type="text" id="badge_criteria" name="badge_criteria" value="<?php echo $row['BadgeCriteria']; ?>" required><br>
-    <button type="submit" name="edit">Edit Badge</button>
+    <?php
+    // Loop through each badge and display its information
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<div>";
+        echo "<input type='hidden' name='badge_id' value='" . $row['BadgeID'] . "'>";
+        echo "<label for='badge_name'>Badge Name:</label>";
+        echo "<input type='text' id='badge_name' name='badge_name' value='" . $row['BadgeName'] . "' required><br>";
+        echo "<label for='badge_desc'>Badge Description:</label>";
+        echo "<input type='text' id='badge_desc' name='badge_desc' value='" . $row['BadgeDesc'] . "' required><br>";
+        echo "<label for='badge_criteria'>Badge Criteria:</label>";
+        echo "<input type='text' id='badge_criteria' name='badge_criteria' value='" . $row['BadgeCriteria'] . "' required><br>";
+        echo "<button type='submit' name='edit'>Submit Request</button>";
+        echo "</div>";
+    }
+    ?>
 </form>
 
 </body>
