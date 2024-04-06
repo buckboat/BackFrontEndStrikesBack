@@ -19,6 +19,7 @@ if (!isset($_SESSION['username'])) {
 <head>
 	<title>Lumberjack Rewards</title>
 	<link href="style.css" rel="stylesheet" />
+
 </head>
 
 <body style=" background-color:  #8e3d4f;">
@@ -139,8 +140,8 @@ if (!isset($_SESSION['username'])) {
 				include('request.php');
 			}
 			if (isset($_POST['stats1'])) {
-				//include('user_most_badges.html');
-				header("Location:user_most_badges.html");
+				include('total_users.php');
+				//header("Location:total_users.php");
 			}
 			if (isset($_POST['stats2'])) {
 			}

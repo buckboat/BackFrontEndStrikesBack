@@ -13,9 +13,12 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 */
 
 
-include "../..//database_operations/DBConnection.php";
+// uncomment the top part and comment these bottom 3 for it to work on your database
+include "..//database_operations/DBConnection.php";
 $engine = new DBConnection();
 $conn = $engine->connect();
+
+
 
 // Check connection
 if (!$conn) {
@@ -38,45 +41,14 @@ mysqli_close($conn);
     <link href="style.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
+<style>
+canvas{
+		color:red;
+    background-color: white;}
+    </style>
 <body>
 
-
-<!--
-<h1 style="text-align:center; color:white; ">
-
-    <img src="spirit-logo-purple-rgb.png" alt="" width="64" height="64">
-
-    Lumberjack Rewards
-
-</h1>
-
-<div class="main">
-
-    <!--
-    <div class="leftside">
-         Your leftside navigation code goes here 
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="mems" value="Members" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="badges" value="Badges" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="requests" value="Requests" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="Stats" value="Statistics" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="events" value="Events" />
-        </form>
-
-        <a href="https://bit.ly/3BlS71b"><img src="Donate.jpg" style="display:flex; vertical-align:middle; color:red; " width="100%" height="44"></a>
-
-        <form style=" padding-top:266%; bottom: 20px;" method="post">
-            <input type="submit" name="Logout" value="Logout" />
-        </form>
-    </div> -->
 
     <div class="chart-container">
         <!-- Chart code goes here -->

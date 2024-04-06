@@ -1,47 +1,58 @@
 <?php
-
-/*
 // Server credentials
 $servername = "localhost";
 $username = "test";
 $password = "test";
-$dbname = "4267DB";
+$dbname = "test";
 
 // Create server/database connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-*/
-
-
-include "../..//database_operations/DBConnection.php";
-$engine = new DBConnection();
-$conn = $engine->connect();
 
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// 3. Total number of existing users
-$total_users_query = mysqli_query($conn, "SELECT COUNT(*) as total_users FROM User");
-$total_users_data = mysqli_fetch_assoc($total_users_query);
-$total_users = $total_users_data['total_users'];
+// 4. Number of Active Users per duration of Time
+	// ASSUMPTION: The data being passed in will be of datetime datatype
+	// $start_date
+	$users_per_time = mysqli_query($conn, "SELECT * FROM User WHERE LastLogin>='2024-02-13 19:48:59'"); // Change datetime -> LastLogin >= $start_date
 
 // Close connection after use
 mysqli_close($conn);
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lumberjack Rewards</title>
     <link href="style.css" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .leaderboard {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .leaderboard td, .leaderboard th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .leaderboard tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .leaderboard th {
+            background-color: black; /* Changed color to black */
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
-
-<!--
 <h1 style="text-align:center; color:white; ">
 
     <img src="spirit-logo-purple-rgb.png" alt="" width="64" height="64">
@@ -51,10 +62,8 @@ mysqli_close($conn);
 </h1>
 
 <div class="main">
-
-    <!--
     <div class="leftside">
-         Your leftside navigation code goes here 
+        <!-- Your leftside navigation code goes here -->
         <form style="padding-bottom:5px;" method="post">
             <input type="submit" name="mems" value="Members" />
         </form>
@@ -76,41 +85,34 @@ mysqli_close($conn);
         <form style=" padding-top:266%; bottom: 20px;" method="post">
             <input type="submit" name="Logout" value="Logout" />
         </form>
-    </div> -->
-
-    <div class="chart-container">
-        <!-- Chart code goes here -->
-        <canvas id="chart" width="200" height="200"></canvas>
     </div>
-</div>
 
-<script>
-    var totalUsers = <?php echo $total_users; ?>;
+    <!-- Active Users Leaderboard -->
+    <div>
+        <h2>Active Users Leaderboard</h2>
 
-    var ctx = document.getElementById('chart').getContext('2d');
-    var userChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Total Users'],
-            datasets: [{
-                label: 'Total Users',
-                data: [totalUsers],
-                //backgroundColor: ,
-                //borderColor: ,
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+        <table class="leaderboard">
+            <tr>
+                <th>Rank</th>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Last Login</th>
+            </tr>
+            <?php
+            $rank = 1;
+            while ($row = mysqli_fetch_assoc($users_per_time)) {
+                echo "<tr>";
+                echo "<td>" . $rank++ . "</td>";
+                echo "<td>" . $row['UserID'] . "</td>";
+                echo "<td>" . $row['Username'] . "</td>";
+                echo "<td>" . $row['LastLogin'] . "</td>";
+                echo "</tr>";
             }
-        }
-    });
-</script>
+            ?>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>
