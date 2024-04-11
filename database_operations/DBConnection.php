@@ -42,7 +42,14 @@ class DBConnection
 		//finally returning the connection link 
 		return $this->con;
 	}
- 
+	
+	function run($query) 
+	{
+		$conn = $this->connect();
+        $stmt = $conn->query($query);
+        $conn->close();
+        return $stmt;
+	}
 }
 
 ?>

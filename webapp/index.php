@@ -200,11 +200,12 @@ if (!isset($_SESSION['username'])) {
 			<input type="submit" name="ResetDB" value="Reset" />
 		</form>
 
-
-
-
-
-	</div>
+		<div>
+			<?php
+				$badgeID = 123;
+				echo '<img src="generateQRCode.php?id='.$badgeID.'" />';
+			?>				
+		</div>
 
 
 </body>
