@@ -41,11 +41,6 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 			<div>
 
 				<?php
-
-				
-			
-
-			
 				require_once dirname(__FILE__, $levels = 2) . "/database_operations/Constants.php";
 
 
@@ -147,11 +142,9 @@ if (!isset($_SESSION['username'])) { //if login in session is not set
 
 		<div>
 			<?php
-				echo '<img src="testImage.php" />';
-			?>
-
-
-
+				$badgeID = 123;
+				echo '<img src="generateQRCode.php?id='.$badgeID.'" />';
+			?>				
 		</div>
 
 

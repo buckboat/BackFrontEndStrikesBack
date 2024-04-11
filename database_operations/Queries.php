@@ -135,11 +135,11 @@ define('DummyData_UserBadge',
     
     "INSERT INTO UserBadge (UserID, BadgeID, BadgeStepsCompleted) VALUES
     (1, 1, 1),
-    (2, 1, 1),
+    (2, 1, 0),
     (2, 2, 1),
     (3, 3, 2),
     (4, 4, 1),
-    (5, 5, 5);");
+    (5, 5, 3);");
 
 
 define('DummyData_UserDepartment', 
