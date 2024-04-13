@@ -93,9 +93,29 @@ if (!isset($_SESSION['username'])) {
 
 			<!-- button functionality -->
 			<?php
+
+			//Sidebar
 			if (isset($_POST['mems'])) {
 				include('memberinfo.php');
 			}
+			if (isset($_POST['badges'])) {
+				include('editbadge.php');
+			}
+			if (isset($_POST['requests'])) {
+				include('request.php');
+			}
+			if (isset($_POST['Stats'])) {
+				include('statistics.php');
+			}
+			if (isset($_POST['events'])) {
+				include('events.php');
+			}
+			if (isset($_POST['Logout'])) {
+				include('logout.php');
+			}
+
+
+			//members
 			if (isset($_POST['addmems'])) {
 				include('addmember.php');
 			}
@@ -117,28 +137,15 @@ if (!isset($_SESSION['username'])) {
 
 
 
-			if (isset($_POST['Logout'])) {
-				include('logout.php');
-			}
-			if (isset($_POST['Stats'])) {
-				include('statistics.php');
-			}
-			if (isset($_POST['badges'])) {
-				include('editbadge.php');
-			}
-			if (isset($_POST['events'])) {
-				include('events.php');
-			}
-
-
-
 
 			if (isset($_POST['edit'])) {
 				include('editbadge.php');
 			}
-			if (isset($_POST['requests'])) {
-				include('request.php');
-			}
+
+
+
+
+			//requests
 			if (isset($_POST['togApprove'])) {
 				include('request.php');
 			}
@@ -152,17 +159,19 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['deleteRequest'])) {
 				include('request.php');
 			}
-
-
-
-			if (isset($_POST['UserLogin']))
-				include('login.php');
-			if (isset($_POST['BTNreset'])) {
-				echo "<pre>gfj_db reset to default values!\n </pre>";
-			}
 			if (isset($_POST['Approve'])) {
 				include('request.php');
 			}
+
+
+			//login
+			if (isset($_POST['UserLogin']))
+				include('login.php');
+
+
+
+
+			//statistics
 			if (isset($_POST['stats1'])) {
 				include('user_most_badges.html');
 				//header("Location:user_most_badges.html");
@@ -177,6 +186,11 @@ if (!isset($_SESSION['username'])) {
 			}
 			if (isset($_POST['stats6'])) {
 			}
+
+
+
+		
+			//database functions
 			if (isset($_POST['CreateDB'])) {
 				include('../database_operations/specific_operations/CreateDatabase.php');
 			}
@@ -208,7 +222,7 @@ if (!isset($_SESSION['username'])) {
 			echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
 			*/
 			?>
-	
+
 		</div>
 
 
