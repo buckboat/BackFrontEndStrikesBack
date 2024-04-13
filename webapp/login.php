@@ -86,6 +86,12 @@ include 'topbar.php';
         while ($row = mysqli_fetch_array($result)) {
 
           $_SESSION['type'] = intval($row['UserType']);
+          
+          $sql = "UPDATE User SET LastLogin = DATE() WHERE Username = '$username' AND Password='$password'";
+
+          //mysqli_query($conn, $sql);
+          
+
         }
 
 

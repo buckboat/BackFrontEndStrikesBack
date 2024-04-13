@@ -35,11 +35,9 @@
     if (isset($_POST['editRequest'])) {
 
         $RequestBadgeID = $_POST['hiddenID'];
-        
     } else {
 
         $RequestBadgeID = $_POST['editRequestIndex'];
-     
     }
 
 
@@ -66,7 +64,6 @@
             //echo "Error updating badge: " . mysqli_error($conn);
 
         }
-
     }
 
 
@@ -85,6 +82,7 @@
     <form method='post'>
         <?php
 
+ 
         // Fetch data from the "benefits" table
         $sql = "SELECT * FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
         $result = $conn->query($sql);
@@ -106,7 +104,7 @@
             // Output data
             while ($row = $result->fetch_assoc()) {
 
-                if ($row["RequestApproved"] == TRUE) {
+                if ($row["isVisible"] == FALSE) {
                     continue;
                 }
 
@@ -127,7 +125,6 @@
             echo " </table>
             
             </form>";
-
         } else {
             echo "0 results";
         }

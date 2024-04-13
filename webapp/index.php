@@ -154,7 +154,7 @@ if (!isset($_SESSION['username'])) {
 			}
 
 
-			
+
 			if (isset($_POST['UserLogin']))
 				include('login.php');
 			if (isset($_POST['BTNreset'])) {
@@ -164,8 +164,8 @@ if (!isset($_SESSION['username'])) {
 				include('request.php');
 			}
 			if (isset($_POST['stats1'])) {
-				//include('user_most_badges.html');
-				header("Location:user_most_badges.html");
+				include('user_most_badges.html');
+				//header("Location:user_most_badges.html");
 			}
 			if (isset($_POST['stats2'])) {
 			}
@@ -200,11 +200,15 @@ if (!isset($_SESSION['username'])) {
 			<input type="submit" name="ResetDB" value="Reset" />
 		</form>
 
+
 		<div>
 			<?php
-				$badgeID = 123;
-				echo '<img src="generateQRCode.php?id='.$badgeID.'" />';
-			?>				
+			/* onces badges are down ill ad this to events or badges?
+			$badgeID = 12;
+			echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
+			*/
+			?>
+	
 		</div>
 
 

@@ -91,7 +91,7 @@
         }
 
         ?>
-
+<!--
     <form style="padding-top:25px;" method="post">
 		<input type="submit" name="addmems" value="Add Members" />
 	</form>
@@ -99,7 +99,9 @@
     <form style="padding-top:5px;" method="post">
 		<input type="submit" name="delmems" value="Delete Members" />
 	</form>
-	
+-->
+
+
 </body>
 
 </html>

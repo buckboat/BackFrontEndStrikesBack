@@ -45,7 +45,7 @@
 
         // Update entry in database
         // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        $sql = "UPDATE BadgeRequest SET RequestApproved = TRUE WHERE RequestID = '$RequestBadgeID' ";
+        $sql = "UPDATE BadgeRequest SET isVisible = FALSE WHERE RequestID = '$RequestBadgeID' ";
 
         if (mysqli_query($conn, $sql)) {
 
@@ -130,7 +130,7 @@
             // Output data of each row
             while ($row = $result->fetch_assoc()) {
 
-                if ($row["RequestApproved"] == TRUE) {
+                if ($row["isVisible"] == FALSE) {
                     continue;
                 }
 
