@@ -3,10 +3,18 @@
 $servername = "localhost";
 $username = "test";
 $password = "test";
-$dbname = "test";
+$dbname = "4267DB";
 
 // Create server/database connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+
+
+/*
+include "../..//database_operations/DBConnection.php";
+$engine = new DBConnection();
+$conn = $engine->connect();
+*/
 
 // Check connection
 if (!$conn) {
