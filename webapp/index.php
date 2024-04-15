@@ -126,7 +126,7 @@ if (!isset($_SESSION['username'])) {
 				include('editmember.php');
 			}
 			if (isset($_POST['editUser'])) {
-				include('memberinfo.php');
+				include('editmember.php');
 			}
 			if (isset($_POST['delmems'])) {
 				include('deletemember.php');
