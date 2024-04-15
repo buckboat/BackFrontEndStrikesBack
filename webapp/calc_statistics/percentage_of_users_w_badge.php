@@ -50,73 +50,25 @@ mysqli_close($conn);
             background-color: #8e3d4f; /* Set background color */
             color: white; /* Set text color */
         }
-      
         
-      .table-container {
-        margin: 0 auto;
-        width: 80%;
-        max-width: 600px
-      }
-    </style>
-</head>
-<body>
-
-<h1 style="text-align:center; color:white; "   >
-
-    <img src="spirit-logo-purple-rgb.png" alt="" width="64" height="64">
-
-    Lumberjack Rewards
-
-</h1>
-
-<div class="main">
-    <div class="leftside">
-        <!-- Your leftside navigation code goes here -->
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="mems" value="Members" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="badges" value="Badges" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="requests" value="Requests" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="Stats" value="Statistics" />
-        </form>
-        <form style="padding-bottom:5px;" method="post">
-            <input type="submit" name="events" value="Events" />
-        </form>
-
-        <a href="https://bit.ly/3BlS71b"><img src="Donate.jpg" style="display:flex; vertical-align:middle; color:red; " width="100%" height="44"></a>
-
-        <form style=" padding-top:266%; bottom: 20px;" method="post">
-            <input type="submit" name="Logout" value="Logout" />
-        </form>
-    </div>
-</div>
-
-<head>
-    <title>Badge Percentage Chart</title>
-    <style>
-        /* Additional CSS styles */
-        body {
-            background-color: #8e3d4f; /* Set background color */
-            color: white; /* Set text color */
+        .table-container {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 600px;
         }
-        
+
         table {
             border-collapse: collapse;
             width: 100%;
         }
-        
+
         th, td {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
-            background-color: black
+            background-color: black;
         }
-        
+
         th {
             background-color: black;
         }
@@ -124,27 +76,25 @@ mysqli_close($conn);
 </head>
 <body>
 
-<div class ="table-container">
-  <h2>Badge Percentage Chart</h2>
-  <table>
-  <tr>
-    <th>Category</th>
-    <th>Percentage</th>
-  </tr>
-  <tr>
-    <td>Students with Badge</td>
-    <td><?php echo $percentage; ?>%</td>
-  </tr>
-  <tr>
-    <td>Students without Badge</td>
-    <td><?php echo 100 - $percentage; ?>%</td>
-  </tr>
-</table>
-  </div>
-
+<div class="table-container">
+    <h2>Badge Percentage Chart</h2>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Percentage</th>
+        </tr>
+        <tr>
+            <td>Students with Badge</td>
+            <td><?php echo $percentage; ?>%</td>
+        </tr>
+        <tr>
+            <td>Students without Badge</td>
+            <td><?php echo 100 - $percentage; ?>%</td>
+        </tr>
+    </table>
+</div>
 
 </body>
-  </body>
-  
 </html>
+
   
