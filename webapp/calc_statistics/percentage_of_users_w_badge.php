@@ -1,20 +1,9 @@
 <?php
-// Server credentials
-$servername = "localhost";
-$username = "test";
-$password = "test";
-$dbname = "4267DB";
-
-// Create server/database connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 
-
-/*
-include "../..//database_operations/DBConnection.php";
+include dirname(__FILE__) . "/config.php";
 $engine = new DBConnection();
 $conn = $engine->connect();
-*/
 
 // Check connection
 if (!$conn) {
@@ -25,7 +14,7 @@ if (!$conn) {
 // Will probably pass the UserID from calling page
 // $badge_id = data_input
 
-$students_with_badge = mysqli_query($conn, "SELECT COUNT(*) AS EarnedFrequency FROM UserBadge WHERE BadgeID='3'"); 
+$students_with_badge = mysqli_query($conn, "SELECT COUNT(*) AS EarnedFrequency FROM UserBadge WHERE BadgeID='1';"); 
 
 // Process the query results
 if ($students_with_badge && mysqli_num_rows($students_with_badge) > 0) {
@@ -36,7 +25,7 @@ if ($students_with_badge && mysqli_num_rows($students_with_badge) > 0) {
 }
 
 // Get total number of students to calculate percentage
-$total_students_query = mysqli_query($conn, "SELECT COUNT(*) AS TotalStudents FROM Students");
+$total_students_query = mysqli_query($conn, "SELECT COUNT(*) AS TotalStudents FROM User;");
 $total_students_row = mysqli_fetch_assoc($total_students_query);
 $total_students = $total_students_row['TotalStudents'];
 

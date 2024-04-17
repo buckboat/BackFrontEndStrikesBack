@@ -1,5 +1,6 @@
 <?php 
 include_once dirname(__FILE__) . '/Constants.php';
+include_once dirname(__FILE__) . '/Queries.php';
 	
 //Class DbConnect
 class DBConnection

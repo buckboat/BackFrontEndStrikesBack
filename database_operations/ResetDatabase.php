@@ -2,7 +2,6 @@
 
 #include query definitions and connection engine
 include_once dirname(__FILE__) . "/DBConnection.php";
-include_once dirname(__FILE__) . "/Queries.php";
 
 $engine = new DBConnection();
 
