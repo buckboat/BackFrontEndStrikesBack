@@ -30,11 +30,11 @@ if ($_SESSION['type'] == 1) { //if login in session is not set
 		<div>
 			<form method="post" target="_blank" >
 				<input type="submit" name="stats1" value="Users with Most Badges" />
-				<input type="submit" name="stats2" value="Stats 2" />
-				<input type="submit" name="stats3" value="Stats 3" />
-				<input type="submit" name="stats4" value="Stats 4" />
-				<input type="submit" name="stats5" value="Stats 5" />
-				<input type="submit" name="stats6" value="Stats 6" />
+				<input type="submit" name="stats2" value="Frequently Awarded Badges" />
+				<input type="submit" name="stats3" value="Number of Active Users" />
+				<input type="submit" name="stats4" value="Percentage of Users with Badge" />
+				<input type="submit" name="stats5" value="Total Users" />
+				<input type="submit" name="stats6" value="Badges Per Department" />
 			</form>
 		</div>
 

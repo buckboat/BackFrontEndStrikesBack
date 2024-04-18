@@ -173,18 +173,23 @@ if (!isset($_SESSION['username'])) {
 
 			//statistics
 			if (isset($_POST['stats1'])) {
-				include('user_most_badges.html');
-				//header("Location:user_most_badges.html");
+				include('../webapp/calc_statistics/user_most_badges.php');
+				//header("Location:../webapp/calc_statistics/user_most_badges.php");
 			}
 			if (isset($_POST['stats2'])) {
+				include('../webapp/calc_statistics/frequently_awarded_badges.php');
 			}
 			if (isset($_POST['stats3'])) {
+				include('../webapp/calc_statistics/number_active_users.php');
 			}
 			if (isset($_POST['stats4'])) {
+				include('../webapp/calc_statistics/percentage_of_users_w_badge.php');
 			}
 			if (isset($_POST['stats5'])) {
+				include('../webapp/calc_statistics/total_users.php');
 			}
 			if (isset($_POST['stats6'])) {
+				include('../webapp/calc_statistics/badges_per_department.php');
 			}
 
 
