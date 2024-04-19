@@ -6,7 +6,28 @@
 </head>
 <body>
     <h2>Add New Badge</h2>
-    <form method="post" action="process_addbadge.php">
+    <form method="post">
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            include "..//database_operations/DBConnection.php";
+            $engine = new DBConnection();
+            $conn = $engine->connect();
+
+            $badge_name = $_POST['badge_name'];
+            $badge_desc = $_POST['badge_desc'];
+            $badge_criteria = $_POST['badge_criteria'];
+
+            // Insert new badge into the database
+            $sql = "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria) 
+                    VALUES ('$badge_name', '$badge_desc', '$badge_criteria')";
+
+            if(mysqli_query($conn, $sql)) {
+                echo "New badge added successfully.";
+            } else {
+                echo "Error adding badge: " . mysqli_error($conn);
+            }
+        }
+        ?>
         <label for="badge_name">Badge Name:</label><br>
         <input type="text" id="badge_name" name="badge_name" required><br><br>
 

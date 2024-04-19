@@ -27,26 +27,24 @@ $engine = new DBConnection();
 $conn = $engine->connect();
 
 if(isset($_POST['edit'])) {
-    $requests = $_POST['edit'];
+    $badges = $_POST['edit'];
 
-    foreach($requests as $request) {
-        $badge_id = $request['badge_id'];
-        $badge_name = $request['badge_name'];
-        $badge_desc = $request['badge_desc'];
-        $badge_criteria = $request['badge_criteria'];
+    foreach($badges as $badge_id => $badge) {
+        $badge_name = $badge['badge_name'];
+        $badge_desc = $badge['badge_desc'];
+        $badge_criteria = $badge['badge_criteria'];
 
-        // Create a request to update the badge
-        $sql = "INSERT INTO BadgeRequest (BadgeID, BadgeName, BadgeDesc, BadgeCriteria, Comment) 
-                VALUES ('$badge_id', '$badge_name', '$badge_desc', '$badge_criteria', 'Requested changes')";
+        // Update the badge in the database
+        $sql = "UPDATE Badge SET BadgeName = '$badge_name', BadgeDesc = '$badge_desc', BadgeCriteria = '$badge_criteria' WHERE BadgeID = '$badge_id'";
 
         if(mysqli_query($conn, $sql)) {
-            echo "Request submitted successfully for BadgeID: $badge_id.<br>";
+            echo "Badge updated successfully for BadgeID: $badge_id.<br>";
         } else {
-            echo "Error submitting request for BadgeID: $badge_id - " . mysqli_error($conn) . "<br>";
+            echo "Error updating badge for BadgeID: $badge_id - " . mysqli_error($conn) . "<br>";
         }
     }
 
-    // Redirect to index.php after submitting the requests
+    // Redirect to index.php after updating badges
     header("Location: index.php");
     exit(); 
 }
@@ -58,12 +56,6 @@ $result = mysqli_query($conn, $sql);
 
 <!-- Form to edit badges -->
 <form method="post" action="">
-  <!-- Passthrough array for POST data -->
-    <?php
-    $post_data_json = json_encode($_POST);
-    echo "<input type='hidden' name='post_data' value='$post_data_json'>";
-    ?>
-
     <table>
         <tr>
             <th>Badge Name</th>
@@ -74,22 +66,19 @@ $result = mysqli_query($conn, $sql);
         // Loop through each badge and display its information
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<input type='hidden' name='edit[" . $row['BadgeID'] . "][badge_id]' value='" . $row['BadgeID'] . "'>";
             echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_name]' value='" . $row['BadgeName'] . "' required></td>";
             echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_desc]' value='" . $row['BadgeDesc'] . "' required></td>";
             echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_criteria]' value='" . $row['BadgeCriteria'] . "' required></td>";
-            echo "<td>";
-            //echo "<button type='submit'>Submit Request</button>";
-            echo "<a href='selectedbadge.php?id=" . $row['BadgeID'] . "'><button type='button'>View Badge</button></a>";
-            echo "</td>";
             echo "</tr>";
         }
         ?>
         <!-- Add badge button -->
         <tr>
-        <td><a href='addbadge.php'><button type='button'>Add Badge</button></a></td>
+            <td colspan="3"><a href='addbadge.php'><button type='button'>Add Badge</button></a></td>
         </tr>
     </table>
+    <!-- God pls let this button work I will cry if it doesn't -->
+    <button type='submit'>Save Changes</button>
 </form>
 </body>
 </html>
