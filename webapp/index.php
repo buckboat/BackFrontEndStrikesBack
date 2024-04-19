@@ -192,7 +192,10 @@ if (!isset($_SESSION['username'])) {
 				include('../webapp/calc_statistics/badges_per_department.php');
 			}
 
-
+			//events 
+			if (isset($_POST['eventQR'])) {
+				include('qr.php');
+			}
 
 		
 			//database functions
@@ -222,10 +225,10 @@ if (!isset($_SESSION['username'])) {
 
 		<div>
 			<?php
-			/* onces badges are down ill ad this to events or badges?
-			$badgeID = 12;
-			echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
-			*/
+			 //onces badges are down ill ad this to events or badges?
+			//$badgeID = 12;
+			//echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
+			
 			?>
 
 		</div>

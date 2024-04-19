@@ -53,6 +53,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Active</th>
+            <th>QR Code</th>
             
           </tr>";
 
@@ -60,8 +61,10 @@
             while ($row = $result->fetch_assoc()) {
                 echo "
             <tr>
-                <td>" . $row["EventName"] . "</td>
+                <td>" . $row["EventName"] . "
+                <input type='hidden' name='hiddenName' value='" . $row['EventName'] . "'> </td>
                 <td>" . $row["EventDescription"] . "</td>
+                
 
                 <td>" ;
                 
@@ -73,9 +76,14 @@
                 }
 
                   echo"  </td>
+                  <td> <input type='submit' id='eventQR' name='eventQR' value='" . $row["BadgeID"] . "'> </td>
               </tr>";
             }
-            echo "</table> </form>";
+            echo "</table> 
+            
+        
+
+            </form>";
         } else {
             echo "0 results";
         }
