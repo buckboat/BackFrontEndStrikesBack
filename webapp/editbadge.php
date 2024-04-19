@@ -69,7 +69,6 @@ $result = mysqli_query($conn, $sql);
             <th>Badge Name</th>
             <th>Badge Description</th>
             <th>Badge Criteria</th>
-            <th>Action</th>
         </tr>
         <?php
         // Loop through each badge and display its information
@@ -80,7 +79,7 @@ $result = mysqli_query($conn, $sql);
             echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_desc]' value='" . $row['BadgeDesc'] . "' required></td>";
             echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_criteria]' value='" . $row['BadgeCriteria'] . "' required></td>";
             echo "<td>";
-            echo "<button type='submit'>Submit Request</button>";
+            //echo "<button type='submit'>Submit Request</button>";
             echo "<a href='selectedbadge.php?id=" . $row['BadgeID'] . "'><button type='button'>View Badge</button></a>";
             echo "</td>";
             echo "</tr>";
@@ -88,10 +87,7 @@ $result = mysqli_query($conn, $sql);
         ?>
         <!-- Add badge button -->
         <tr>
-            <td><input type='text' name='new_badge_name' placeholder='New Badge Name' required></td>
-            <td><input type='text' name='new_badge_desc' placeholder='New Badge Description' required></td>
-            <td><input type='text' name='new_badge_criteria' placeholder='New Badge Criteria' required></td>
-            <td><button type='submit' name='add'>Add Badge</button></td>
+        <td><a href='addbadge.php'><button type='button'>Add Badge</button></a></td>
         </tr>
     </table>
 </form>
