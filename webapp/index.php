@@ -29,6 +29,7 @@ if (!isset($_SESSION['username'])) {
 			<div>
 				<?php
 
+
 				include 'topbar.php';
 				include 'leftside.php';
 
@@ -199,7 +200,7 @@ if (!isset($_SESSION['username'])) {
 				include('qr.php');
 			}
 
-		
+
 			//database functions
 			if (isset($_POST['CreateDB'])) {
 				include('../database_operations/specific_operations/CreateDatabase.php');
@@ -227,10 +228,10 @@ if (!isset($_SESSION['username'])) {
 
 		<div>
 			<?php
-			 //onces badges are down ill ad this to events or badges?
+			//onces badges are down ill ad this to events or badges?
 			//$badgeID = 12;
 			//echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
-			
+
 			?>
 
 		</div>

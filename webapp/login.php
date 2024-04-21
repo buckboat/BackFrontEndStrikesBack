@@ -79,33 +79,36 @@ include 'topbar.php';
 
       if ($row['Username'] === $username && $row['Password'] === $password) {
 
-        $sql =  "SELECT UserType  FROM User WHERE Username = '$username'";
+
+
+
+
+        $sql =  "SELECT UserType,UserID  FROM User WHERE Username = '$username'";
 
         $result = mysqli_query($conn, $sql);
+
+
 
         while ($row = mysqli_fetch_array($result)) {
 
           $_SESSION['type'] = intval($row['UserType']);
-          
-          $sql = "UPDATE User SET LastLogin = DATE() WHERE Username = '$username' AND Password='$password'";
 
-          //mysqli_query($conn, $sql);
-          
 
+          $cat = intval($row['UserID']);
+
+          $sql = "UPDATE User SET LastLogin = NOW() WHERE UserID = '$cat'";
+  
+          mysqli_query($conn, $sql);
+          
         }
 
 
         //password verify and password hash commands for php.
+        $_SESSION['username'] = $username;
 
-
+        header('Location:index.php');
+        exit();
       }
-
-
-
-      $_SESSION['username'] = $username;
-
-      header('Location:index.php');
-      exit();
     }
   }
 
