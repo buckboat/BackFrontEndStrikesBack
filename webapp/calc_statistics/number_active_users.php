@@ -29,16 +29,20 @@ mysqli_close($conn);
         .leaderboard {
             border-collapse: collapse;
             width: 100%;
+            color: white;
+            text-align: center;
+            font-size: x-large;
         }
 
         .leaderboard td, .leaderboard th {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
 
         .leaderboard tr:nth-child(even) {
             background-color: #f2f2f2;
+            color: purple;
         }
 
         .leaderboard th {
@@ -51,7 +55,7 @@ mysqli_close($conn);
 
     <!-- Active Users Leaderboard -->
     <div>
-        <h2>Active Users Leaderboard</h2>
+        <h1 style="text-align: center;">Active Users Leaderboard</h1>
 
         <table class="leaderboard">
             <tr>

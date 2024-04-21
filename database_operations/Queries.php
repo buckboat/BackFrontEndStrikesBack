@@ -113,7 +113,7 @@ define('DummyData_User',
 define('DummyData_Badge', 
     
     "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, BadgeCreated) VALUES
-    ('Badge 1', 'Description 1', 'Criteria 1', 1, 1, 1, NOW()),
+    ('rat', 'Dog', 'mouse', 1, 1, 1, NOW()),
     ('Badge 2', 'Description 2', 'Criteria 2', 5, 2, 1, NOW()),
     ('Badge 3', 'Description 3', 'Criteria 3', 3, 3, 3, NOW()),
     ('Badge 4', 'Description 4', 'Criteria 4', 2, 4, 2, NOW()),
@@ -157,7 +157,7 @@ define('DummyData_BadgeRequest',
     "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, Comment, isVisible) VALUES
     (2, 1, 'Yeah', 'A New Badge', 'yes', 1, 1, 1, 'comment', 1),
     (3, 2, 'nope', 'this badge is cool', 'do something', 5, 2, 1, 'no', 1),
-    (3, 10, 'Squirrels', 'too many squirrels', 'take the squirrels', 3, 3, 3, 'New badge for Squirrel Pics', 0);");
+    (3, 10, 'Squirrels', 'too many squirrels', 'take the squirrels', 3, 3, 3, 'New badge for Squirrel Pics', 1);");
 
 
 define('DummyData_EventBadge', 

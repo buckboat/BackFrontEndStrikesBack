@@ -96,7 +96,7 @@
             <th>Description</th>
             <th>Criteria</th>
             <th>Comment</th>
-            <th>Delete</th>
+            <th>Click to Delete Request</th>
 
             
           </tr>";
@@ -118,20 +118,21 @@
             <td><input type='submit' id='deleteRequest' name='deleteRequest' value='" . $row['RequestID'] . " '>
             <input type='hidden' name='hiddenID' value='" . $row['RequestID'] . "'> </td>
 
-            <input type='submit' id='editRequest' name='editRequest' value='Submit Changes'>
+            <input type='submit' id='editRequest' name='editRequest' value='Submit Request Edits'>
 
               </tr>";
             }
             echo " </table>
-            
+            <input type='submit' id='backRequest' name='backRequest' value='Back to Request Index'>
             </form>";
         } else {
             echo "0 results";
         }
 
-
+        
 
         ?>
+
 
 
 </body>

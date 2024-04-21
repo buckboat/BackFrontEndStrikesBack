@@ -36,10 +36,14 @@ mysqli_close($conn);
         th, td {
             border: 1px solid #000;
             padding: 8px;
-            text-align: left;
+            text-align: center;
+            font-size: larger;
+            color:purple;
         }
         th {
             background-color: #000;
+            text-align: center;
+            
             color: #fff;
         }
         tr:nth-child(even) {
@@ -51,7 +55,7 @@ mysqli_close($conn);
     </style>
 </head>
 <body>
-    <h2>Department Badges Report</h2>
+    <h1 style="text-align: center;">Department Badges Report</h1>
     <table>
         <tr>
             <th>Department ID</th>

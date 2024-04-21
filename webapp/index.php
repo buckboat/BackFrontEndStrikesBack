@@ -155,7 +155,9 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['editRequest'])) {
 				include('individualRequest.php');
 			}
-
+			if (isset($_POST['backRequest'])) {
+				include('request.php');
+			}
 			if (isset($_POST['deleteRequest'])) {
 				include('request.php');
 			}

@@ -34,45 +34,52 @@
     $conn = $engine->connect();
 
 
-
+        // if approved will grab data to update the badge table
     if (isset($_POST['togApprove'])) {
 
-        //echo $_POST['togApprove'];
 
         $RequestBadgeID = $_POST['togApprove'];
 
-        //echo $RequestBadgeID;
+        $sql = "SELECT * FROM BadgeRequest WHERE RequestID = '$RequestBadgeID'";
+        $result = $conn->query($sql);
 
-        // Update entry in database
-        // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        $sql = "UPDATE BadgeRequest SET isVisible = FALSE WHERE RequestID = '$RequestBadgeID' ";
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+
+
+                $EditRequestBadgeName =$row['BadgeName'];
+                echo $EditRequestBadgeName;
+
+                $EditRequestBadgeDesc = $row['BadgeDesc'];
+                echo $EditRequestBadgeDesc ;
+
+                $EditRequestBadgeCrit = $row['BadgeCriteria'];
+                echo $EditRequestBadgeCrit;
+
+                $EditRequestBadgeID = $row['BadgeID'];
+                echo $EditRequestBadgeID;
+            }
+        }
+
+        // Update Badge from RequestBadge 
+        $sql = "UPDATE Badge SET BadgeName = '$EditRequestBadgeName', BadgeDesc =  '$EditRequestBadgeDesc', BadgeCriteria = '$EditRequestBadgeCrit' WHERE BadgeID = '$EditRequestBadgeID'";
+
 
         if (mysqli_query($conn, $sql)) {
 
+            // Delete From RequestBadge after Update
 
-            $EditRequestBadgeName = $_POST['requestName'];
-            //echo $EditRequestBadgeNam;
-
-            $EditRequestBadgeDesc = $_POST['requestDesc'];
-            //echo $EditRequestBadgeDesc ;
-
-            $EditRequestBadgeCrit = $_POST['requestCrit'];
-            //echo $EditRequestBadgeCrit;
-
-            $EditRequestBadgeCom = $_POST['requestCom'];
-
-            $sql = "UPDATE Badge SET BadgeApproved = TRUE WHERE BadgeID = '$RequestBadgeID'  ";
-            //echo "Badge updated successfully.";
+            $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
 
 
-            //} else {
+            mysqli_query($conn, $sql);
 
-            //echo "Error updating badge: " . mysqli_error($conn);
+            echo "Badge updated successfully.";
+        } else {
 
+            echo "Error updating badge: " . mysqli_error($conn);
         }
-
-
-
     }
 
     if (isset($_POST['deleteRequest'])) {
@@ -87,6 +94,8 @@
             //echo "Error updating badge: " . mysqli_error($conn);
         }
     }
+
+    
 
 
     ?>
@@ -138,19 +147,25 @@
 
                 if ($_SESSION['type'] == 0) { //
 
-                    echo "<td class='checkbox'> <input type='submit' id='togApprove' name='togApprove' value='" . $row["RequestID"] . "'>  </td>";
+                    echo "<td> <input type='submit' name='togApprove' value='" . $row["RequestID"] . "'>  
+                    </td>";
                 }
 
-                echo " <td>" . $row["BadgeName"] . "</td>
+                echo " <td>" . $row["BadgeName"] . "
+                <input type='hidden' name='hiddenName' value='" . $row['BadgeName'] . "'></td>
 
-                <td>" . $row["BadgeDesc"] . "</td>
-                <td>" . $row["BadgeCriteria"] . "</td>
+                <td>" . $row["BadgeDesc"] . "
+                <input type='hidden' name='hiddenDesc' value='" . $row['BadgeDesc'] . "'></td>
+
+                <td>" . $row["BadgeCriteria"] . "
+                <input type='hidden' name='hiddenCrit' value='" . $row['BadgeCriteria'] . "'></td>
+
                 <td>" . $row["Comment"] . "</td>
-                <td> <input type='submit' id='editRequestIndex' name='editRequestIndex' value='" . $row["RequestID"] . "'> </td>
+
+                <td> <input type='submit' name='editRequestIndex' value='" . $row["RequestID"] . "'> </td>
               </tr>";
             }
             echo "</table> </form>";
-
         } else {
             echo "0 results";
         }

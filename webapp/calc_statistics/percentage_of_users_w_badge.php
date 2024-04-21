@@ -61,7 +61,8 @@ mysqli_close($conn);
 
         th, td {
             border: 1px solid #dddddd;
-            text-align: left;
+            text-align: center;
+            font-size: x-large;
             padding: 8px;
             background-color: black;
         }
@@ -74,7 +75,7 @@ mysqli_close($conn);
 <body>
 
 <div class="table-container">
-    <h2>Badge Percentage Chart</h2>
+    <h1 style="text-align: center;">Badge Percentage Chart</h1>
     <table>
         <tr>
             <th>Category</th>

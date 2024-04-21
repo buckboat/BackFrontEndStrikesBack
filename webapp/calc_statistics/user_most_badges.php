@@ -33,6 +33,8 @@ mysqli_close($conn);
     <style>
         .leaderboard {
             list-style: none;
+            text-align: center;
+            font-size: x-large;
             padding: 0;
             margin: 0;
         }
@@ -49,11 +51,11 @@ mysqli_close($conn);
 </head>
 <body> 
 
-    <h2>Leaderboard - User with Most Badges</h2>
+    <h1 style="text-align: center;">Leaderboard - User with Most Badges</h1>
 
     <ul class="leaderboard">
         <?php if ($user_with_most_badges != 0): ?>
-            <li>User with Most Badges: <?php echo $user_with_most_badges; ?></li>
+            <li>User  <?php echo $user_with_most_badges; ?></li>
         <?php else: ?>
             <li>No user found with badges</li>
         <?php endif; ?>
