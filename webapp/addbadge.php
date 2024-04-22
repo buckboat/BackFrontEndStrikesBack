@@ -18,7 +18,7 @@
             $badge_criteria = $_POST['badge_criteria'];
 
             // Insert new badge into the database
-            $sql = "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria) 
+            $sql = "INSERT INTO BadgeRequest (BadgeName, BadgeDesc, BadgeCriteria) 
                     VALUES ('$badge_name', '$badge_desc', '$badge_criteria')";
 
             if(mysqli_query($conn, $sql)) {
