@@ -36,9 +36,9 @@ if (!isset($_SESSION['username'])) {
 
 				//resets permission if user went to a page without permission
 
-				if ($_SESSION['Permisson'] == '1') {
-					include 'permisson.php';
-					$_SESSION['Permisson'] = '0';
+				if ($_SESSION['Permission'] == '1') {
+					include 'permission.php';
+					$_SESSION['Permission'] = '0';
 					header("refresh: 3");
 				}
 

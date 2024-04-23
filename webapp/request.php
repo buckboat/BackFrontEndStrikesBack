@@ -139,6 +139,7 @@
 
 
             echo "
+            <th>Badge ID</th>
             <th>Badge Name</th>
             <th>Description</th>
             <th>Criteria</th>
@@ -162,7 +163,10 @@
                     </td>";
                 }
 
-                echo " <td>" . $row["BadgeName"] . "
+                echo " <td>" . $row["BadgeID"] . "
+                <input type='hidden' name='hiddenName' value='" . $row['BadgeName'] . "'></td>
+                
+                <td>" . $row["BadgeName"] . "
                 <input type='hidden' name='hiddenName' value='" . $row['BadgeName'] . "'></td>
 
                 <td>" . $row["BadgeDesc"] . "

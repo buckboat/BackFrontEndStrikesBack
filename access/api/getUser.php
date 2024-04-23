@@ -17,6 +17,7 @@
             extract($row);
             $user_item = array(
                 'Username' => $Username,
+                'Password' => $Password,
                 'LastLogin' => $LastLogin,
                 'ProfilePictureID' => $ProfilePictureID
             );

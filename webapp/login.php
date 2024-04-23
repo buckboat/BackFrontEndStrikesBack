@@ -105,6 +105,7 @@ include 'topbar.php';
 
         //password verify and password hash commands for php.
         $_SESSION['username'] = $username;
+        $_SESSION['Permission'] = -1;
 
         header('Location:index.php');
         exit();
