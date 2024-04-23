@@ -92,7 +92,7 @@ include 'topbar.php';
         while ($row = mysqli_fetch_array($result)) {
 
           $_SESSION['type'] = intval($row['UserType']);
-
+          $_SESSION['UserID'] = intval($row['UserID']);
 
           $cat = intval($row['UserID']);
 

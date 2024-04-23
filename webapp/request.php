@@ -59,12 +59,21 @@
 
                 $EditRequestBadgeID = $row['BadgeID'];
                 echo $EditRequestBadgeID;
+
+                $EditRequestBadgeIcon = intval($row['BadgeIcon']);
+                $EditRequestBadgeRarity = intval($row['BadgeRarity']);
+                $EditRequestBadgeSteps = intval($row['BadgeSteps']);
             }
         }
 
+        if ($EditRequestBadgeID==null){
+        $sql = "INSERT INTO Badge (BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, BadgeCreated) VALUES
+            ('$EditRequestBadgeName','$EditRequestBadgeDesc', '$EditRequestBadgeCrit', '$EditRequestBadgeIcon', '$EditRequestBadgeRarity', '$EditRequestBadgeSteps', NOW() );" ;}
+            else{
+
         // Update Badge from RequestBadge 
         $sql = "UPDATE Badge SET BadgeName = '$EditRequestBadgeName', BadgeDesc =  '$EditRequestBadgeDesc', BadgeCriteria = '$EditRequestBadgeCrit' WHERE BadgeID = '$EditRequestBadgeID'";
-
+        }
 
         if (mysqli_query($conn, $sql)) {
 
