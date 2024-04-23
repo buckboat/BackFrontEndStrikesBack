@@ -25,6 +25,23 @@ mysqli_close($conn);
     <title>Lumberjack Rewards</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+  body{
+
+        color:white;
+        background-color: white;
+            
+        }
+    main{
+        background-color: white;
+    }
+    .chart-container{
+        background-color: white;
+
+    }
+    </style> 
+      
+   
 </head>
 <body>
 
@@ -83,8 +100,8 @@ mysqli_close($conn);
             datasets: [{
                 label: 'Total Users',
                 data: [totalUsers],
-                //backgroundColor: ,
-                //borderColor: ,
+                //backgroundColor: 'white' ,
+                //borderColor: 'white' ,
                 borderWidth: 1
             }]
         },
