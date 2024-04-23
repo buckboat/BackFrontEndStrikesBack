@@ -127,12 +127,15 @@ if (!isset($_SESSION['username'])) {
 				include('editmember.php');
 			}
 			if (isset($_POST['editUser'])) {
-				include('editmember.php');
+				include('memberinfo.php');
 			}
 			if (isset($_POST['delmems'])) {
 				include('deletemember.php');
 			}
 			if (isset($_POST['deleteMember'])) {
+				include('memberinfo.php');
+			}
+			if (isset($_POST['backToMems'])){
 				include('memberinfo.php');
 			}
 

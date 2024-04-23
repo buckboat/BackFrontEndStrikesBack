@@ -38,11 +38,29 @@
         header("Location: index.php");
     }
 
+    if (isset($_POST['editUser'])) {
+
+        $EditUserID = $_POST['hiddenID'];
+        $EditUserType = $_POST['userType'];
+
+        // Update entry in database
+
+        // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
+        $sql = "UPDATE User SET UserType = CAST('$EditUserType' AS CHAR) WHERE UserID = CAST('$EditUserID' AS CHAR) ";
+
+
+        if (mysqli_query($conn, $sql)) {
+
+            //echo "User updated successfully.\n";
+            
+        } else {
+
+            //echo "Error updating User: " . mysqli_error($conn);
+
+        }
+    }
+
     ?>
-
-
-
-
 
     <form method='post'>
         <?php

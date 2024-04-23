@@ -43,30 +43,8 @@
     }
 
 
-    if (isset($_POST['editUser'])) {
-
-        $EditUserID = $_POST['hiddenID'];
-        $EditUserType= $_POST['UserType'];
-
-        // Update entry in database
-
-        // $sql = "DELETE FROM BadgeRequest WHERE RequestID = '$RequestBadgeID' ";
-        $sql = "UPDATE User SET UserType = '$EditUserType' WHERE UserID = '$EditUserID' ";
-
-
-        if (mysqli_query($conn, $sql)) {
-
-            echo "User updated successfully.";
-
-        } else {
-
-            echo "Error updating User: " . mysqli_error($conn);
-
-        }
-
-    }
-
-
+    
+	
     ?>
 
 
@@ -75,7 +53,7 @@
         <?php
 
         // Fetch data from the "benefits" table
-        $sql = "SELECT Username, UserType FROM User WHERE UserID = '$UsernameIndex' ";
+        $sql = "SELECT * FROM User WHERE UserID = '$UsernameIndex' ";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -91,31 +69,23 @@
 
             // Output data
             while ($row = $result->fetch_assoc()) {
-
-                /*
-                if ($row["RequestApproved"] == TRUE) {
-                    continue;
-                }*/
-
                 echo "
-            <tr>
-            
-            <td>" . $row["Username"] . "</td>
-            <td><input type='text' id='userType' name='userType' value=" . $row['UserType'] . " required></td>
-
-            <input type='submit' id='editUser' name='editUser' value='Submit Changes'>
-
-              </tr>";
+                <tr>
+                
+                <td>" . $row["Username"] . "</td>
+                <td><input type='text' id='userType' name='userType' value=" . $row['UserType'] . " required></td>
+                <input type='hidden' name='hiddenID' value='" . $row['UserID'] . "'>
+                </tr>";
             }
             echo " </table>
-            
+            <input type='submit' id='editUser' name='editUser' value='Submit Changes'>
+            <input type='submit' id='backToMems' name='backToMems' value='Back to Members'>
             </form>";
 
         } else {
-            echo "0 results";
+            echo "0 results\n
+            <input type='submit' id='backToMems' name='backToMems' value='Back to Members'>";
         }
-
-
 
         ?>
 
