@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
 
 
 				include 'topbar.php';
-				include 'leftside.php';
+			include 'leftside.php';
 
 
 				//resets permission if user went to a page without permission
@@ -138,10 +138,17 @@ if (!isset($_SESSION['username'])) {
 
 
 
-
+			//badges
 			if (isset($_POST['edit'])) {
 				include('editbadge.php');
 			}
+			if (isset($_POST['addBadge'])) {
+				include('addbadge.php');
+			}
+			if (isset($_POST['insertBadge'])) {
+				include('addbadge.php');
+			}
+
 
 
 

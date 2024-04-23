@@ -9,17 +9,21 @@
     <form method="post">
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
             include "..//database_operations/DBConnection.php";
             $engine = new DBConnection();
             $conn = $engine->connect();
 
             $badge_name = $_POST['badge_name'];
+            echo $badge_name;
             $badge_desc = $_POST['badge_desc'];
+            echo $badge_desc;
             $badge_criteria = $_POST['badge_criteria'];
+            echo $badge_criteria;
 
             // Insert new badge into the database
-            $sql = "INSERT INTO BadgeRequest (BadgeName, BadgeDesc, BadgeCriteria) 
-                    VALUES ('$badge_name', '$badge_desc', '$badge_criteria')";
+            $sql = "INSERT INTO BadgeRequest (BadgeName, BadgeDesc, BadgeCriteria,isVisible) 
+                    VALUES ('$badge_name', '$badge_desc', '$badge_criteria',1)";
 
             if(mysqli_query($conn, $sql)) {
                 echo "New badge added successfully.";
@@ -37,7 +41,7 @@
         <label for="badge_criteria">Badge Criteria:</label><br>
         <textarea id="badge_criteria" name="badge_criteria" rows="4" cols="50" required></textarea><br><br>
 
-        <input type="submit" value="Add Badge">
+        <input type="submit" name="insertBadge" value="Add Badge">
     </form>
 </body>
 </html>

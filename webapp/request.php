@@ -111,6 +111,8 @@
 
 
     <form method='post'>
+
+    
         <?php
 
         // Fetch data from the "benefits" table
