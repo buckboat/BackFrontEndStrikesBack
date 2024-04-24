@@ -29,7 +29,7 @@
     <?php
 
     if ($_SESSION['type'] == 1) { //if login in session is not set
-        $_SESSION['Permisson'] = '1';
+        $_SESSION['Permission'] = '1';
         header("Location: index.php");
     }
 
