@@ -30,17 +30,28 @@ if ($_SESSION['type'] == 1) { //if login in session is not set
         <div>
 
             <?php
+                include "..//database_operations/DBConnection.php";
+                $engine = new DBConnection();
+                $conn = $engine->connect();
 
 
         if (isset($_POST['eventQR']))
 
             $badgeID = $_POST['eventQR'];
 
-            $EventName = $_POST['hiddenName'];
+            $sql = "SELECT EventName FROM EventBadge WHERE BadgeID = '$badgeID'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
 
-            echo $EventName;
+            $row = $result->fetch_assoc();
+            
+            echo "<h1>";
+            echo $row["EventName"];
+            echo "</h1>";
+
             echo ' <br> ';
             echo '<img src="generateQRCode.php?id=' . $badgeID . '" />';
+        }
             ?>
 
         </div>
