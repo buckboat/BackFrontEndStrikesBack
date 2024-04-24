@@ -10,9 +10,9 @@
         <?php
         if (isset($_POST['insertBadge'])) {
         
-            // include "..//database_operations/DBConnection.php";
-            // $engine = new DBConnection();
-            // $conn = $engine->connect();
+             include "..//database_operations/DBConnection.php";
+             $engine = new DBConnection();
+             $conn = $engine->connect();
 
             $badge_name = $_POST['badge_name'];
             $badge_desc = $_POST['badge_desc'];
@@ -23,8 +23,9 @@
             $sql = "INSERT INTO BadgeRequest (BadgeName, BadgeDesc, BadgeCriteria, Comment, isVisible) 
                     VALUES ('$badge_name', '$badge_desc', '$badge_criteria', '$badge_comment', 1)";
             
-            $result = db->run($sql);
-            if($result) {
+
+
+    if(mysqli_query($conn, $sql)) {
                 echo "New badge added successfully.";
             } else {
                 echo "Error adding badge: " . mysqli_error($conn);

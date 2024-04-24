@@ -49,16 +49,16 @@
 
 
                 $EditRequestBadgeName =$row['BadgeName'];
-                echo $EditRequestBadgeName;
+                //echo $EditRequestBadgeName;
 
                 $EditRequestBadgeDesc = $row['BadgeDesc'];
-                echo $EditRequestBadgeDesc ;
+                //echo $EditRequestBadgeDesc ;
 
                 $EditRequestBadgeCrit = $row['BadgeCriteria'];
-                echo $EditRequestBadgeCrit;
+                //echo $EditRequestBadgeCrit;
 
                 $EditRequestBadgeID = $row['BadgeID'];
-                echo $EditRequestBadgeID;
+                //echo $EditRequestBadgeID;
 
                 $EditRequestBadgeIcon = intval($row['BadgeIcon']);
                 $EditRequestBadgeRarity = intval($row['BadgeRarity']);
