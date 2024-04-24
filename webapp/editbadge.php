@@ -37,7 +37,14 @@
             $badge_desc = $badge['badge_desc'];
             $badge_criteria = $badge['badge_criteria'];
 
-            // Update the badge in the database
+
+            //needs a check to see if any changes from saved changes to whats in the database
+            // sql with badge id to pull data and check to see if any changes
+            // if no changes skip
+            // if changes another sql to see if a request with the same badge id exists if it does update the request table
+            // if no chages insert into the request table.
+            
+            // Update the badge in the database 
             $sql = "UPDATE Badge SET BadgeName = '$badge_name', BadgeDesc = '$badge_desc', BadgeCriteria = '$badge_criteria' WHERE BadgeID = '$badge_id'";
 
             if (mysqli_query($conn, $sql)) {
@@ -48,9 +55,9 @@
         }
 
         // Redirect to index.php after updating badges
-        header("Location: index.php");
+        //header("Location: index.php");
         
-        exit();
+        //exit();
     }
 
     // Fetch all badges from the database
@@ -81,8 +88,10 @@
                 <!--<td colspan="3"><a href='addbadge.php'><button type='button'>Add Badge</button></a></td>-->
             </tr>
         </table>
-        <!-- God pls let this button work I will cry if it doesn't 
-        <button type='submit'>Save Changes</button>-->
+        <!-- God pls let this button work I will cry if it doesn't -->
+        <button type='submit'>Save Changes</button>
+        <div></div>
+        <div></div> <!--  master html ui design -->
         
 
 
