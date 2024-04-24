@@ -44,15 +44,17 @@
             $sql_check_changes = "SELECT * FROM Badge WHERE BadgeID = '$badge_id'";
             $result_check_changes = mysqli_query($conn, $sql_check_changes);
             $row_check_changes = mysqli_fetch_assoc($result_check_changes);
-        
-            if ($row_check_changes['BadgeName'] != $badge_name || $row_check_changes['BadgeDesc'] != $badge_desc || $row_check_changes['BadgeCriteria'] != $badge_criteria || $row_check_changes['BadgeComment'] != $badge_comment || $row_check_changes['BadgeRarity'] != $badge_rarity || $row_check_changes['BadgeSteps'] != $badge_steps) {
+        //|| $row_check_changes['BadgeComment'] != $badge_comment
+            if ($row_check_changes['BadgeName'] != $badge_name || $row_check_changes['BadgeDesc'] != $badge_desc || $row_check_changes['BadgeCriteria'] != $badge_criteria  || $row_check_changes['BadgeRarity'] != $badge_rarity || $row_check_changes['BadgeSteps'] != $badge_steps) {
                 // Check if a mf request with the same badgeID exists
+
+
                 $sql_check_request = "SELECT * FROM BadgeRequest WHERE BadgeID = '$badge_id'";
                 $result_check_request = mysqli_query($conn, $sql_check_request);
             
                 if (mysqli_num_rows($result_check_request) > 0) {
                     // Update the mf request table
-                    $sql_update_request = "UPDATE BadgeRequest SET BadgeName = '$badge_name', BadgeDesc = '$badge_desc', BadgeCriteria = '$badge_criteria', BadgeComment = '$badge_comment', BadgeRarity = '$badge_rarity', BadgeSteps = '$badge_steps' WHERE BadgeID = '$badge_id'";
+                    $sql_update_request = "UPDATE BadgeRequest SET BadgeName = '$badge_name', BadgeDesc = '$badge_desc', BadgeCriteria = '$badge_criteria', Comment = '$badge_comment', BadgeRarity = '$badge_rarity', BadgeSteps = '$badge_steps' WHERE BadgeID = '$badge_id'";
                     if (mysqli_query($conn, $sql_update_request)) {
                         echo "Request updated successfully for BadgeID: $badge_id.<br>";
                     } else {
@@ -60,7 +62,7 @@
                     }
                 } else {
                     // Insert into the mf request table
-                    $sql_insert_request = "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, Comment, isVisible) VALUES ('{$_SESSION['UserID']}', '$badge_id', '$badge_name', '$badge_desc', '$badge_criteria', 1, 1, 1, '', 1)";
+                    $sql_insert_request = "INSERT INTO BadgeRequest (UserID, BadgeID, BadgeName, BadgeDesc, BadgeCriteria, BadgeIcon, BadgeRarity, BadgeSteps, Comment, isVisible) VALUES ('{$_SESSION['UserID']}', '$badge_id', '$badge_name', '$badge_desc', '$badge_criteria', 1, 1, 1, '$badge_comment', 1)";
                     if (mysqli_query($conn, $sql_insert_request)) {
                         echo "New request added successfully for BadgeID: $badge_id.<br>";
                     } else {
@@ -92,11 +94,12 @@
       
             // Loop through each badge and display its information
             while ($row = mysqli_fetch_assoc($result)) {
+                $row['BadgeComment'] = '';
                 echo "<tr>";
                 echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_name]' value='" . $row['BadgeName'] . "' required></td>";
                 echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_desc]' value='" . $row['BadgeDesc'] . "' required></td>";
                 echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_criteria]' value='" . $row['BadgeCriteria'] . "' required></td>";
-                echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_comment]' value='" . $row['BadgeComment'] . "' required></td>";
+                echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_comment]' value='" . $row['BadgeComment'] . "'></td>";
                 echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_rarity]' value='" . $row['BadgeRarity'] . "' required></td>";
                 echo "<td><input type='text' name='edit[" . $row['BadgeID'] . "][badge_steps]' value='" . $row['BadgeSteps'] . "' required></td>";
                 echo "</tr>";
