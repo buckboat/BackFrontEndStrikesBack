@@ -209,6 +209,24 @@ if (!isset($_SESSION['username'])) {
 			if (isset($_POST['eventQR'])) {
 				include('qr.php');
 			}
+			if (isset($_POST['addEvent'])) {
+				include('addEvent.php');
+			}
+			if (isset($_POST['insertEvent'])) {
+				include('addEvent.php');
+			}
+			if (isset($_POST['editEventIndex'])) {
+				include('editEvent.php');
+			}
+			if (isset($_POST['deleteEvent'])) {
+				include('events.php');
+			}
+			if (isset($_POST['backEvent'])) {
+				include('events.php');
+			}
+			if (isset($_POST['editEvent'])) {
+				include('editEvent.php');
+			}
 
 
 			//database functions

@@ -111,10 +111,10 @@
                 echo "
             <tr>
             
-            <td><input type='text' id='requestName' name='requestName' value=" . $row['BadgeName'] . " required></td>
-            <td><input type='text' id='requestDesc' name='requestDesc' value=" . $row['BadgeDesc'] . " required></td>
-            <td><input type='text' id='requestCrit' name='requestCrit' value=" . $row['BadgeCriteria'] . " required></td>
-            <td><input type='text' id='requestCom' name='requestCom' value=" . $row['Comment'] . " required></td> 
+            <td><input type='text' id='requestName' name='requestName' value=\"" . $row['BadgeName'] . "\" required></td>
+            <td><input type='text' id='requestDesc' name='requestDesc' value=\"" . $row['BadgeDesc'] . "\" required></td>
+            <td><input type='text' id='requestCrit' name='requestCrit' value=\"" . $row['BadgeCriteria'] . "\" required></td>
+            <td><input type='text' id='requestCom' name='requestCom' value=\"" . $row['Comment'] . "\" required></td> 
             <td><input type='submit' id='deleteRequest' name='deleteRequest' value='" . $row['RequestID'] . " '>
             <input type='hidden' name='hiddenID' value='" . $row['RequestID'] . "'> </td>
 

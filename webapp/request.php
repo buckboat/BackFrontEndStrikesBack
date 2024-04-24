@@ -164,16 +164,16 @@
                 }
 
                 echo " <td>" . $row["BadgeID"] . "
-                <input type='hidden' name='hiddenName' value='" . $row['BadgeName'] . "'></td>
+                <input type='hidden' name='hiddenName' value=\"" . $row['BadgeName'] . "\"></td>
                 
                 <td>" . $row["BadgeName"] . "
-                <input type='hidden' name='hiddenName' value='" . $row['BadgeName'] . "'></td>
+                <input type='hidden' name='hiddenName' value=\"" . $row['BadgeName'] . "\"></td>
 
                 <td>" . $row["BadgeDesc"] . "
-                <input type='hidden' name='hiddenDesc' value='" . $row['BadgeDesc'] . "'></td>
+                <input type='hidden' name='hiddenDesc' value=\"" . $row['BadgeDesc'] . "\"></td>
 
                 <td>" . $row["BadgeCriteria"] . "
-                <input type='hidden' name='hiddenCrit' value='" . $row['BadgeCriteria'] . "'></td>
+                <input type='hidden' name='hiddenCrit' value=\"" . $row['BadgeCriteria'] . "\"></td>
 
                 <td>" . $row["Comment"] . "</td>
 

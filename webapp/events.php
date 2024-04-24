@@ -35,6 +35,25 @@
 
     ?>
 
+    <?php
+
+
+if (isset($_POST['deleteEvent'])) {
+
+    $EditEventBadgeID = $_POST['hiddenID'];
+    $sql = "DELETE FROM EventBadge WHERE EventBadgeID = '$EditEventBadgeID' ";
+
+    if (mysqli_query($conn, $sql)) {
+
+        //echo "Badge updated successfully.";
+    } else {
+        //echo "Error updating badge: " . mysqli_error($conn);
+    }
+}
+
+    ?>
+
+
 
 
 
@@ -50,10 +69,12 @@
             //echo "<form method='post'>";
             echo "<table>";
             echo "<tr>
+            <th>Badge ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Active</th>
             <th>QR Code</th>
+            <th>Edit Event?</th>
             
           </tr>";
 
@@ -61,6 +82,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo "
             <tr>
+                <td>" . $row["BadgeID"] . " </td>
                 <td>" . $row["EventName"] . "
                 <input type='hidden' name='hiddenName' value='" . $row['EventName'] . "'> </td>
                 <td>" . $row["EventDescription"] . "</td>
@@ -77,6 +99,7 @@
 
                   echo"  </td>
                   <td> <input type='submit' id='eventQR' name='eventQR' value='" . $row["BadgeID"] . "'> </td>
+                  <td> <input type='submit' name='editEventIndex' value='" . $row["EventBadgeID"] . "'> </td>
               </tr>";
             }
             echo "</table> 
@@ -88,10 +111,15 @@
             echo "0 results";
         }
 
+        
+
         ?>
 
+<br></br>
 
 
+</form>
+    <form method="post"><input type='submit' name='addEvent' value='Add Event'></form>
 
 </body>
 
